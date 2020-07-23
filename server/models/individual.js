@@ -12,25 +12,37 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Individual.hasMany(models.Relationship)
+      Individual.belongsTo(models.User)
     }
   };
   Individual.init({
-    first_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notNull: {
           args: true,
-          msg: 'Firstname is required'
+          msg: 'Name is required'
         },
         notEmpty: {
           args: true,
-          msg: 'Firstname cannot be empty'
+          msg: 'Name cannot be empty'
         }
       }
     },
-    last_name: {
+    password: {
       type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: 'Password is required'
+        },
+        notEmpty: {
+          args: true,
+          msg: 'Password cannot be empty'
+        }
+      }
     },
     gender: {
       type: DataTypes.ENUM('male', 'female', 'other'),
@@ -87,7 +99,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     instagram: DataTypes.STRING,
-    facebook: DataTypes.STRING
+    facebook: DataTypes.STRING,
+    UserId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id'
+      },
+      onUpdate: 'Cascade',
+      onDelete: 'Cascade'
+    },
   }, {
     sequelize,
     modelName: 'Individual',

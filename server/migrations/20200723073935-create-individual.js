@@ -8,10 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      first_name: {
-        type: Sequelize.STRING
-      },
-      last_name: {
+      name: {
         type: Sequelize.STRING
       },
       gender: {
@@ -34,6 +31,15 @@ module.exports = {
       },
       facebook: {
         type: Sequelize.STRING
+      },
+      UserId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onUpdate: 'Cascade',
+        onDelete: 'Cascade'
       },
       createdAt: {
         allowNull: false,
