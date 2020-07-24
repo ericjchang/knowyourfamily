@@ -44,7 +44,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       onUpdate: 'Cascade',
       onDelete: 'Cascade'
-    }
+    },
+    status: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Relationship',

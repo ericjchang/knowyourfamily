@@ -38,6 +38,9 @@ module.exports = {
         onUpdate: 'Cascade',
         onDelete: 'Cascade'
       },
+      status: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
