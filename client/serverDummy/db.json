@@ -1,0 +1,246 @@
+{
+  "genre": [
+    {
+      "id": "1",
+      "name": "Fighting"
+    },
+    {
+      "id": "2",
+      "name": "RPG"
+    },
+    {
+      "id": "3",
+      "name": "Rythm"
+    },
+    {
+      "id": "4",
+      "name": "Horror"
+    }
+  ],
+  "games": [
+    {
+      "id": 1,
+      "name": "Tekken 7",
+      "genreId": 1,
+      "img": "https://images.g2a.com/newlayout/323x433/1x1x0/2eaba5eac2f5/5912b3aa5bafe3628c14fcdd",
+      "description": "Tekken 7 is a fighting game developed and published by Bandai Namco Entertainment. It is the seventh canonical installment in the Tekken series following Tekken Tag Tournament 2, also it is the final chapter of The Mishima Saga Story and was the first to make use of the Unreal Engine."
+    },
+    {
+      "id": 2,
+      "name": "Dragon Ball FighterZ",
+      "genreId": 1,
+      "img": "https://s3.gaming-cdn.com/images/products/2141/orig/dragon-ball-fighterz-cover.jpg",
+      "description": "Dragon Ball FighterZ is a 2D fighting game developed by Arc System Works and published by Bandai Namco Entertainment."
+    },
+    {
+      "id": 3,
+      "name": "Mortal Kombat X",
+      "genreId": 1,
+      "img": "https://cdn-products.eneba.com/resized-products/i6cdigmw2tb09uw27hgo_390x400_1x-0.jpg",
+      "description": "Mortal Kombat X is a fighting video game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment. Running on the Unreal Engine 3, it is the tenth main installment in the Mortal Kombat video game series and a sequel to the 2011 game Mortal Kombat."
+    },
+    {
+      "id": 4,
+      "name": "Dragon Quest XI",
+      "genreId": 2,
+      "img": "https://d3fa68hw0m2vcc.cloudfront.net/1c5/203421409.jpeg",
+      "description": "Dragon Quest XI: Echoes of an Elusive Age is a role-playing video game developed and published by Square Enix."
+    },
+    {
+      "id": 5,
+      "name": "Horizon Zero Dawn",
+      "genreId": 2,
+      "img": "https://hipegalaxy.com/wp-content/uploads/2018/07/zero-dawn.jpg",
+      "description": "Horizon Zero Dawn is an action role-playing game developed by Guerrilla Games and published by Sony Interactive Entertainment. The plot follows Aloy, a hunter in a world overrun by machines, who sets out to uncover her past."
+    },
+    {
+      "id": 6,
+      "name": "The Last of Us",
+      "genreId": 2,
+      "img": "https://images-na.ssl-images-amazon.com/images/I/91yiVwuQ2cL.jpg",
+      "description": "The Last of Us is a 2013 action-adventure game developed by Naughty Dog and published by Sony Computer Entertainment. Players control Joel, a smuggler tasked with escorting a teenage girl, Ellie, across a post-apocalyptic United States. The Last of Us is played from a third-person perspective."
+    },
+    {
+      "id": 7,
+      "name": "Persona 4",
+      "genreId": 3,
+      "img": "https://static.zerochan.net/Persona.4%3A.Dancing.All.Night.full.2246383.png",
+      "description": "Persona 4: Dancing All Night is a rhythm video game developed and published by Atlus for the PlayStation Vita. The game is a spin-off of the 2008 role-playing game, Persona 4, which is part of the Persona series of Megami Tensei games."
+    },
+    {
+      "id": 8,
+      "name": "Hatsune Miku",
+      "genreId": 3,
+      "img": "https://images-na.ssl-images-amazon.com/images/I/912VdyVT10L.jpg",
+      "description": "Hatsune Miku is the name of a Vocaloid software voicebank developed by Crypton Future Media and its official moe anthropomorph, a 16-year-old girl with long, turquoise twintails. She uses Yamaha Corporation's Vocaloid 2, Vocaloid 3, and Vocaloid 4 singing synthesizing technologies."
+    },
+    {
+      "id": 9,
+      "name": "Patapon",
+      "genreId": 3,
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcShRmka0rAM4Nixp4SOvVRUVB5CM7BgT_Vpm7dBbZCWa_CuUsVO&usqp=CAU",
+      "description": "Patapon is a video game published for the PlayStation Portable handheld game console combining gameplay features of a rhythm game and a third-person god game. The title is created from two Japanese onomatopoeia, pata and pon."
+    },
+    {
+      "id": 10,
+      "name": "Resident Evil 7",
+      "genreId": 4,
+      "img": "https://merahputih.com/media/34/5b/bd/345bbd689f3df113131b00f1a200b1e9.jpg",
+      "description": "Resident Evil 7: Biohazard is a survival horror video game developed and published by Capcom, released in January 2017 for Windows, Xbox One, PlayStation 4 and in May 2018 for the Nintendo Switch in Japan."
+    },
+    {
+      "id": 11,
+      "name": "Resident Evil 3",
+      "genreId": 4,
+      "img": "https://upload.wikimedia.org/wikipedia/en/d/dc/Resident_Evil_3.jpg",
+      "description": "Resident Evil 3 is a survival horror game developed and published by Capcom. It is a remake of Resident Evil 3: Nemesis and follows Jill Valentine and Carlos Oliveira as they attempt to survive a zombie apocalypse while hunted by the intelligent bioweapon Nemesis."
+    },
+    {
+      "id": 12,
+      "name": "Outlast 2",
+      "genreId": 4,
+      "img": "https://ecs7.tokopedia.net/img/cache/700/product-1/2018/4/22/17743661/17743661_a2d6101d-e65d-4c53-8749-30ac98c85f03_720_720.jpg",
+      "description": "Outlast 2 is a first-person psychological horror survival video game developed and published by Red Barrels."
+    }
+  ],
+  "comments": [
+    {
+      "username": "pururung",
+      "content": "asd",
+      "gameId": "9",
+      "id": 1
+    },
+    {
+      "username": "sekai",
+      "content": "asd",
+      "gameId": "9",
+      "id": 2
+    },
+    {
+      "username": "asdasd",
+      "content": "as",
+      "gameId": "9",
+      "id": 3
+    },
+    {
+      "username": "a",
+      "content": "s",
+      "gameId": 9,
+      "id": 4
+    },
+    {
+      "username": "c",
+      "content": "asd",
+      "gameId": 9,
+      "id": 5
+    },
+    {
+      "username": "x",
+      "content": "asdasd",
+      "gameId": 9,
+      "id": 6
+    },
+    {
+      "username": "z",
+      "content": "asdasdsad",
+      "gameId": 9,
+      "id": 7
+    },
+    {
+      "username": "dddd",
+      "content": "asdasdasdsa",
+      "gameId": 9,
+      "id": 8
+    },
+    {
+      "username": "asdadasd",
+      "content": "adssad",
+      "gameId": 9,
+      "id": 9
+    },
+    {
+      "username": "zxc",
+      "content": "asd",
+      "gameId": 9,
+      "id": 10
+    },
+    {
+      "username": "zxczc",
+      "content": "asd",
+      "gameId": 9,
+      "id": 11
+    },
+    {
+      "username": "asd",
+      "content": "asdasd",
+      "gameId": 9,
+      "id": 12
+    },
+    {
+      "username": "asd",
+      "content": "a",
+      "gameId": 9,
+      "id": 13
+    },
+    {
+      "username": "a",
+      "content": "a",
+      "gameId": 9,
+      "id": 14
+    },
+    {
+      "username": "asd",
+      "content": "aaa",
+      "gameId": 9,
+      "id": 15
+    },
+    {
+      "username": "a",
+      "content": "a",
+      "gameId": 9,
+      "id": 16
+    },
+    {
+      "username": "x",
+      "content": "x",
+      "gameId": 9,
+      "id": 17
+    },
+    {
+      "username": "hey",
+      "content": "asd",
+      "gameId": 9,
+      "id": 18
+    },
+    {
+      "username": "raka",
+      "content": "lulus",
+      "gameId": 2,
+      "id": 19
+    },
+    {
+      "username": "raka",
+      "content": "sayang papa mama",
+      "gameId": 2,
+      "id": 20
+    },
+    {
+      "username": "pataaa",
+      "content": "pon",
+      "gameId": 9,
+      "id": 21
+    },
+    {
+      "username": "haiyaa",
+      "content": "biutipul",
+      "gameId": 8,
+      "id": 22
+    },
+    {
+      "username": "raka",
+      "content": "bismillah",
+      "gameId": 6,
+      "id": 23
+    }
+  ]
+}
