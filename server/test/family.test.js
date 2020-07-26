@@ -4,6 +4,22 @@ const { sequelize } = require("../models");
 const { queryInterface } = sequelize;
 const { decodeToken } = require("../helpers/jwt.js"); */
 
+/* GET : /user/:id  --> find user by id
+POST : /user --> register
+PUT : /user/:id --> edit user
+GET : /user/search?=
+
+GET : /individual --> fetch semua individual dari user
+POST : /individual --> create individual baru
+PUT : /individual/:id --> edit individual
+DELETE : /individual/:id --> delete individual
+
+GET : /family
+POST : /family/:id  --> untuk add relationship, default status 'false', id yg di pake, id user yg add
+PUT : /family/:id  --> untuk accept relationship, id yg di pake, id relationship
+DELETE : /family/:id --> untuk decline relationship, id yg di pake, id relationship 
+*/
+
 let token = "";
 beforeAll((done) => {
   request(app)
