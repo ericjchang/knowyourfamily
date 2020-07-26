@@ -7,6 +7,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from 'react-redux'
 import FavGame from "./pages/FavGame";
 import Search from "./pages/Search";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Map from "./pages/Map";
 import store from './store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../node_modules/video-react/dist/video-react.css";
@@ -39,10 +42,12 @@ export default function App() {
         <div className="App">
           <Switch>
             <Route path="/" exact component={Home} />
-            {/* <Route path="/" exact component={Title} /> */}
-            <Route path="/favGame" component={FavGame}/>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/inputIndividual" component={FavGame}/>
             <Route path="/search" component={Search}/>
             <Route path="/games/:id" component={CardDetail} />
+            <Route path="/map" component={Map} />
           </Switch>
         </div>
         {/* fill={themes[themeColor].foreground} */}
