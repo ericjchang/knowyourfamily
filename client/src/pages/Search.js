@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 export default function Search() {
   const [input, setInput] = useState("");
 
@@ -38,20 +39,20 @@ export default function Search() {
             marginBottom: "3vh",
           }}
         >
-          <img class="card-img-top" src="..." alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
+          <img className="card-img-top" src="..." alt="Card cap" />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
+            <Link href="#" className="btn btn-primary">
+              check them
+            </Link>
           </div>
         </div>
         <div
-          class="card"
+          className="card"
           style={{
             width: "18rem",
             margin: "auto",
@@ -59,20 +60,20 @@ export default function Search() {
             marginBottom: "3vh",
           }}
         >
-          <img class="card-img-top" src="..." alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
+          <img className="card-img-top" src="..." alt="Card cap" />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
+            <Link href="#" className="btn btn-primary">
+              check them
+            </Link>
           </div>
         </div>
         <div
-          class="card"
+          className="card"
           style={{
             width: "18rem",
             margin: "auto",
@@ -80,20 +81,20 @@ export default function Search() {
             marginBottom: "3vh",
           }}
         >
-          <img class="card-img-top" src="..." alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
+          <img className="card-img-top" src="..." alt="Card cap" />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
+            <Link href="#" className="btn btn-primary">
+              check them
+            </Link>
           </div>
         </div>
         <div
-          class="card"
+          className="card"
           style={{
             width: "18rem",
             margin: "auto",
@@ -101,20 +102,20 @@ export default function Search() {
             marginBottom: "3vh",
           }}
         >
-          <img class="card-img-top" src="..." alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
+          <img className="card-img-top" src="..." alt="Card cap" />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
+            <Link href="#" className="btn btn-primary">
+              check them
+            </Link>
           </div>
         </div>
         <div
-          class="card"
+          className="card"
           style={{
             width: "18rem",
             margin: "auto",
@@ -122,20 +123,20 @@ export default function Search() {
             marginBottom: "3vh",
           }}
         >
-          <img class="card-img-top" src="..." alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
+          <img className="card-img-top" src="..." alt="Card cap" />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
+            <Link href="#" className="btn btn-primary">
+              check them
+            </Link>
           </div>
         </div>
         <div
-          class="card"
+          className="card"
           style={{
             width: "18rem",
             margin: "auto",
@@ -143,16 +144,16 @@ export default function Search() {
             marginBottom: "3vh",
           }}
         >
-          <img class="card-img-top" src="..." alt="Card image cap" />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
+          <img className="card-img-top" src="..." alt="Card cap" />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
+            <Link href="#" className="btn btn-primary">
+              check them
+            </Link>
           </div>
         </div>
       </div>

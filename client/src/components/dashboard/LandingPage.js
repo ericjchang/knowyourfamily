@@ -38,7 +38,6 @@ export default function LandingPage() {
             flexDirection: "column",
             flexWrap: "wrap",
             height: "100vh",
-            alignItems: "Center",
           }}
         >
           <h1

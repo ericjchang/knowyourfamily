@@ -49,9 +49,14 @@ export default function Navbar() {
           >
             <li className="nav-item">
               <Link to="/register">
-                <button className="btn btn-outline-success">
+                <button className="btn btn-outline-warning">
                   Register Now
                 </button>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/login">
+                <button className="btn btn-outline-success">Login</button>
               </Link>
             </li>
           </ul>

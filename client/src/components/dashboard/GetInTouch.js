@@ -32,7 +32,6 @@ export default function ApplyYourData() {
             marginLeft: "10vh",
           }}
         >
-          <img></img>
           <div>
             <h1 style={{ fontSize: "2vw", marginTop: "15vw" }}>
               <b>T E S T I M O N I E S</b>

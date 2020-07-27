@@ -15,20 +15,18 @@ function App() {
   return (
     <div>
       <Router>
-        <Navbar />
+        {/* //<Navbar /> */}
         <Switch>
-          <Route path="/family">
+          <Route path="/family/:id">
             <Family />
           </Route>
           <Route path="/search">
             <Search />
           </Route>
-          <Route path="/individuals">
+          <Route path="/individuals/:id">
             <Individuals />
           </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
+          <Route path="/dashboard">{/* <Dashboard /> */}</Route>
           <Route path="/login">
             <Login />
           </Route>
