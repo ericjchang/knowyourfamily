@@ -16,18 +16,13 @@ export default function LandingPage() {
         class="container-fluid text-center"
         style={{
           backgroundImage: "url('https://i.imgur.com/2ZUjKT2.png')",
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "0",
-          paddingTop: "44.15%",
-          /* backgroundSize: "cover",
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "scroll",
           display: "flex",
           justifyContent: "center",
           backgroundPosition: "center",
-          width: "100%", */
+          width: "100%",
         }}
         id="landing"
       >
@@ -54,7 +49,7 @@ export default function LandingPage() {
           <p style={{ marginLeft: "0vw", fontSize: "2vw" }}>
             Discover your anchestry
           </p>
-          <Link to="/login">
+          <Link to="/individual/add">
             <button
               class="btn"
               style={{

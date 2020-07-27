@@ -1,10 +1,94 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import {
+  Form,
+  FormControl,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Button,
+} from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-export default function Navbar() {
+export default function Navigation() {
+  const history = useHistory();
+  // const { theme, changeTheme } = useContext(MyContext);
+  const toIndividualPage = () => {
+    history.push("/individual/add");
+  };
+  const toSearchPage = () => {
+    history.push("/search");
+  };
+  const toLogin = () => {
+    history.push("/login");
+  };
+  const toMap = () => {
+    history.push("/map");
+  };
+  const findData = (e) => {
+    // LOGIC SEARCH
+  };
   return (
     <div /* style={{ position: "fixed", width: "100vw" }} */>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <Navbar
+        expand="lg"
+        style={{
+          width: "100%",
+          zIndex: "100",
+          backgroundColor: `#D58A00`,
+        }}
+      >
+        <Navbar.Brand>
+          <Link
+            to="/dashboard" /* style={{ color: `${themes[theme].background}` }} */
+          >
+            Famtree
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <NavDropdown title="Create" id="basic-nav-dropdown">
+              <NavDropdown.Item onClick={toIndividualPage}>
+                Create a Profile
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/inputIndividual">Create a Family</Link>
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="#testimonies" style={{ color: "white" }}>
+              Testimony
+            </Nav.Link>
+            <Nav.Link href="#whatdoweoffer" style={{ color: "white" }}>
+              Offers
+            </Nav.Link>
+            <Nav.Link href="#applyyourdata" style={{ color: "white" }}>
+              Apply Your Data
+            </Nav.Link>
+            <Nav.Link href="#getintouch" style={{ color: "white" }}>
+              About Us
+            </Nav.Link>
+          </Nav>
+          <Form inline onSubmit={findData}>
+            <Navbar.Brand>
+              <i className="fa fa-search fa-2x" onClick={toSearchPage}></i>
+            </Navbar.Brand>
+            <Button className="btn btn-danger" onClick={toMap}>
+              See Nearby
+            </Button>
+            <button
+              className="btn btn-outline-light ml-2"
+              /* onClick={changeTheme} */
+            >
+              Change Theme
+            </button>
+            <Navbar.Brand>
+              <i className="fa fa-user-circle fa-2x ml-2" onClick={toLogin}></i>
+            </Navbar.Brand>
+          </Form>
+        </Navbar.Collapse>
+      </Navbar>
+      {/* <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a className="navbar-brand" href="#">
           <b>Famtree</b>
         </a>
@@ -59,9 +143,14 @@ export default function Navbar() {
                 <button className="btn btn-outline-success">Login</button>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/map">
+                <button className="btn btn-outline-success">Nearby</button>
+              </Link>
+            </li>
           </ul>
         </div>
-      </nav>
+      </nav> */}
     </div>
   );
 }

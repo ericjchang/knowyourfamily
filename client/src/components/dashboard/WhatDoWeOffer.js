@@ -7,18 +7,19 @@ export default function WhatDoWeOffer() {
         class="container-fluid text-center"
         style={{
           backgroundImage: "url('https://i.imgur.com/vEXdo4I.png')",
+          /* 
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           width: "100%",
           height: "0",
-          paddingTop: "44.15%",
-          /* backgroundSize: "cover",
+          paddingTop: "44.15%", */
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "scroll",
           display: "flex",
           justifyContent: "flex-end",
           backgroundPosition: "center",
-          width: "100%", */
+          width: "100%",
         }}
         id="whatdoweoffer"
       >

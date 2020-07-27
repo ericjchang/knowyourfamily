@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ApplyYourData() {
   return (
@@ -7,18 +8,13 @@ export default function ApplyYourData() {
         class="container-fluid text-center"
         style={{
           backgroundImage: "url('https://i.imgur.com/SjVBvty.png')",
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "0",
-          paddingTop: "44.15%",
-          /* backgroundSize: "cover",
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "scroll",
           display: "flex",
           justifyContent: "center",
           backgroundPosition: "center",
-          width: "100%", */
+          width: "100%",
         }}
         id="applyyourdata"
       >
@@ -65,13 +61,13 @@ export default function ApplyYourData() {
               </div>
             </div>
           </div>
-          <a href="#landing">
+          <Link to="/individual/add">
             <button
               style={{ width: "13vh", height: "5vh", alignSelf: "center" }}
             >
               Button
             </button>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
