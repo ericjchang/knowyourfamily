@@ -29,7 +29,14 @@ export default function Individuals() {
       }
     });
   }, [center]);
-
+  const renderMarkers = (map, maps) => {
+    let marker = new maps.Marker({
+      position: { lat: center.lat, lng: center.lng },
+      map,
+      title: "Hello World!",
+    });
+    return marker;
+  };
   return (
     <div>
       <div className="container d-flex flex-wrap justify-content-center align-items-center mt-3">
@@ -75,6 +82,7 @@ export default function Individuals() {
               defaultCenter={center}
               yesIWantToUseGoogleMapApiInternals
               defaultZoom={zoom}
+              onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
             >
               <AnyReactComponent
                 lat={center.lat}
