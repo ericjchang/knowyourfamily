@@ -28,6 +28,18 @@ class MapTools extends Component {
         lat: this.props.center.lat,
         lng: this.props.center.lng,
       },
+      test: [
+        //-6.1753924,106.8249641
+        {
+          address: "xxxx",
+          lat: this.props.center.lat,
+          lng: this.props.center.lng,
+        },
+        { address: "aaaa", lat: -6.2607187, lng: 106.7794275 },
+        { address: "bbbb", lat: -6.1753924, lng: 106.8249641 },
+        { address: "yyyy", lat: -6.9170552, lng: 107.6099095 },
+        { address: "oooo", lat: 40.6971494, lng: -74.2598661 },
+      ],
     };
   }
   /**
@@ -234,21 +246,36 @@ class MapTools extends Component {
           }}
         >
           {/* InfoWindow on top of marker */}
-          <InfoWindow
-            onClose={this.onInfoWindowClose}
-            position={{
-              lat: this.state.markerPosition.lat + 0.0018,
-              lng: this.state.markerPosition.lng,
-            }}
-          >
-            <div>
-              <span style={{ padding: 0, margin: 0 }}>
-                {this.state.address}
-              </span>
-            </div>
-          </InfoWindow>
-          {/*Marker*/}
-          <Marker
+          {this.state.test.map((e) => {
+            return (
+              <div>
+                <InfoWindow
+                  onClose={this.onInfoWindowClose}
+                  position={{
+                    lat: e.lat + 0.0018,
+                    lng: e.lng,
+                  }}
+                >
+                  <div>
+                    <span style={{ padding: 0, margin: 0 }}>{e.address}</span>
+                  </div>
+                </InfoWindow>
+                {/*Marker*/}
+
+                <Marker
+                  google={this.props.google}
+                  name={"Dolores park"}
+                  draggable={false}
+                  onDragEnd={this.onMarkerDragEnd}
+                  position={{
+                    lat: e.lat,
+                    lng: e.lng,
+                  }}
+                />
+              </div>
+            );
+          })}
+          {/*  <Marker
             google={this.props.google}
             name={"Dolores park"}
             draggable={true}
@@ -258,17 +285,7 @@ class MapTools extends Component {
               lng: this.state.markerPosition.lng,
             }}
           />
-          <Marker
-            google={this.props.google}
-            name={"Dolores park"}
-            draggable={true}
-            onDragEnd={this.onMarkerDragEnd}
-            position={{
-              lat: -6.2765911,
-              lng: 106.7820143,
-            }}
-          />
-          <Marker />
+          <Marker /> */}
           {/* For Auto complete Search Box */}
           <Autocomplete
             style={{
