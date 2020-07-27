@@ -49,7 +49,7 @@ export default function LandingPage() {
           <p style={{ marginLeft: "0vw", fontSize: "2vw" }}>
             Discover your anchestry
           </p>
-          <Link to="/individual/add">
+          <Link to="/individual/form">
             <button
               class="btn"
               style={{

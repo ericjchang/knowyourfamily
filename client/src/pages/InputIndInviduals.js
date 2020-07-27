@@ -5,6 +5,6 @@ import EditForm from "../components/EditForm";
 import AddForm from "../components/AddForm";
 
 export default function InputIndInviduals() {
-  const individual = useSelector((state) => state.individualReducer.individual);
+  const individual = false; //useSelector((state) => state.individualReducer.individual);
   return <div>{individual ? <EditForm /> : <AddForm />}</div>;
 }

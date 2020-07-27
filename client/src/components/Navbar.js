@@ -14,7 +14,7 @@ export default function Navigation() {
   const history = useHistory();
   // const { theme, changeTheme } = useContext(MyContext);
   const toIndividualPage = () => {
-    history.push("/individual/add");
+    history.push("/individual/form");
   };
   const toSearchPage = () => {
     history.push("/search");
@@ -29,7 +29,7 @@ export default function Navigation() {
     // LOGIC SEARCH
   };
   return (
-    <div /* style={{ position: "fixed", width: "100vw" }} */>
+    <div style={{ zIndex: 100, width: "100vw" }}>
       <Navbar
         expand="lg"
         style={{
@@ -48,26 +48,39 @@ export default function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <NavDropdown title="Create" id="basic-nav-dropdown">
-              <NavDropdown.Item onClick={toIndividualPage}>
-                Create a Profile
-              </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link to="/inputIndividual">Create a Family</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#testimonies" style={{ color: "white" }}>
-              Testimony
-            </Nav.Link>
-            <Nav.Link href="#whatdoweoffer" style={{ color: "white" }}>
-              Offers
-            </Nav.Link>
-            <Nav.Link href="#applyyourdata" style={{ color: "white" }}>
-              Apply Your Data
-            </Nav.Link>
-            <Nav.Link href="#getintouch" style={{ color: "white" }}>
-              About Us
-            </Nav.Link>
+            {/* // <div> */}
+            {localStorage.username && (
+              <NavDropdown title="Create" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={toIndividualPage}>
+                  Create a Profile
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/inputIndividual">Create a Family</Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
+
+            {localStorage.username && (
+              <Nav.Link href="#testimonies" style={{ color: "white" }}>
+                Testimony
+              </Nav.Link>
+            )}
+            {localStorage.username && (
+              <Nav.Link href="#whatdoweoffer" style={{ color: "white" }}>
+                Offers
+              </Nav.Link>
+            )}
+            {localStorage.username && (
+              <Nav.Link href="#applyyourdata" style={{ color: "white" }}>
+                Apply Your Data
+              </Nav.Link>
+            )}
+            {localStorage.username && (
+              <Nav.Link href="#getintouch" style={{ color: "white" }}>
+                About Us
+              </Nav.Link>
+            )}
+            {/* // </div> */}
           </Nav>
           <Form inline onSubmit={findData}>
             <Navbar.Brand>

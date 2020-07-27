@@ -61,7 +61,7 @@ export default function ApplyYourData() {
               </div>
             </div>
           </div>
-          <Link to="/individual/add">
+          <Link to="/individual/form">
             <button
               style={{ width: "13vh", height: "5vh", alignSelf: "center" }}
             >

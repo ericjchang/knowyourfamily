@@ -258,6 +258,16 @@ class MapTools extends Component {
               lng: this.state.markerPosition.lng,
             }}
           />
+          <Marker
+            google={this.props.google}
+            name={"Dolores park"}
+            draggable={true}
+            onDragEnd={this.onMarkerDragEnd}
+            position={{
+              lat: -6.2765911,
+              lng: 106.7820143,
+            }}
+          />
           <Marker />
           {/* For Auto complete Search Box */}
           <Autocomplete

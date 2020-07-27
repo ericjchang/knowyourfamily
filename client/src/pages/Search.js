@@ -29,131 +29,71 @@ export default function Search() {
           Search
         </button>
       </form>
-      <div className="container d-flex align-content-around flex-wrap my-3">
-        <div
-          class="card"
-          style={{
-            width: "18rem",
-            margin: "auto",
-            marginTop: "3vh",
-            marginBottom: "3vh",
-          }}
-        >
-          <img className="card-img-top" src="..." alt="Card cap" />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <Link href="#" className="btn btn-primary">
-              check them
-            </Link>
+      <div
+        className="container d-flex align-content-around flex-wrap my-3"
+        style={{
+          border: "2px solid black",
+          overflowX: "scroll",
+          height: "35vh",
+        }}
+      >
+        <div className="container d-flex align-content-around flex-wrap my-3">
+          <div
+            class="card"
+            style={{
+              width: "18rem",
+              margin: "auto",
+              marginTop: "3vh",
+              marginBottom: "3vh",
+            }}
+          >
+            <img className="card-img-top" src="..." alt="Card cap" />
+            <div className="card-body">
+              <Link to="/individual/:id">
+                <h5 className="card-title">--Nama Individu--</h5>
+              </Link>
+              <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <Link href="/individual/:id" className="btn btn-primary">
+                check them
+              </Link>
+            </div>
           </div>
         </div>
-        <div
-          className="card"
-          style={{
-            width: "18rem",
-            margin: "auto",
-            marginTop: "3vh",
-            marginBottom: "3vh",
-          }}
-        >
-          <img className="card-img-top" src="..." alt="Card cap" />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <Link href="#" className="btn btn-primary">
-              check them
-            </Link>
-          </div>
-        </div>
-        <div
-          className="card"
-          style={{
-            width: "18rem",
-            margin: "auto",
-            marginTop: "3vh",
-            marginBottom: "3vh",
-          }}
-        >
-          <img className="card-img-top" src="..." alt="Card cap" />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <Link href="#" className="btn btn-primary">
-              check them
-            </Link>
-          </div>
-        </div>
-        <div
-          className="card"
-          style={{
-            width: "18rem",
-            margin: "auto",
-            marginTop: "3vh",
-            marginBottom: "3vh",
-          }}
-        >
-          <img className="card-img-top" src="..." alt="Card cap" />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <Link href="#" className="btn btn-primary">
-              check them
-            </Link>
-          </div>
-        </div>
-        <div
-          className="card"
-          style={{
-            width: "18rem",
-            margin: "auto",
-            marginTop: "3vh",
-            marginBottom: "3vh",
-          }}
-        >
-          <img className="card-img-top" src="..." alt="Card cap" />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <Link href="#" className="btn btn-primary">
-              check them
-            </Link>
-          </div>
-        </div>
-        <div
-          className="card"
-          style={{
-            width: "18rem",
-            margin: "auto",
-            marginTop: "3vh",
-            marginBottom: "3vh",
-          }}
-        >
-          <img className="card-img-top" src="..." alt="Card cap" />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <Link href="#" className="btn btn-primary">
-              check them
-            </Link>
+      </div>
+      <div
+        className="container d-flex align-content-around flex-wrap my-3"
+        style={{
+          border: "2px solid black",
+          overflowX: "scroll",
+          height: "35vh",
+        }}
+      >
+        <div className="container d-flex align-content-around flex-wrap my-3">
+          <div
+            class="card"
+            style={{
+              width: "18rem",
+              margin: "auto",
+              marginTop: "3vh",
+              marginBottom: "3vh",
+            }}
+          >
+            <img className="card-img-top" src="..." alt="Card cap" />
+            <div className="card-body">
+              <Link to="/individual/:id">
+                <h5 className="card-title">--Nama Individu--</h5>
+              </Link>
+              <p className="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+              <Link href="/individual/:id" className="btn btn-primary">
+                check them
+              </Link>
+            </div>
           </div>
         </div>
       </div>

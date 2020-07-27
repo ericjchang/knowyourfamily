@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-
 import Navigation from "./components/Navbar";
+// import { GuardProvider, GuardedRout 
 
 import Index from "./pages/Index";
 import Register from "./pages/Register";
@@ -17,41 +17,53 @@ import InputIndividuals from "./pages/InputIndInviduals";
 import store from "./store";
 
 function App() {
+  // const requireLogin = (to, from, next) => {
+  //   if (to.meta.auth) {
+  //     if (getIsLoggedIn()) {
+  //       next();
+  //     }
+  //     next.redirect("/login");
+  //   } else {
+  //     next();
+  //   }
+  // };
   return (
     <div>
       <Router>
-        <Provider store={store}>
-          <Navigation />
-          <Switch>
-            <Route path="/map">
-              <Map />
-            </Route>
-            <Route path="/family/:id">
-              <Family />
-            </Route>
-            <Route path="/search">
-              <Search />
-            </Route>
-            <Route path="/individual/:add">
-              <InputIndividuals />
-            </Route>
-            <Route path="/individuals/:id">
-              <Individuals />
-            </Route>
-            <Route path="/dashboard">
-              <Index />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/">
-              <Login />
-            </Route>
-          </Switch>
-        </Provider>
+        {/* <GuardProvider guards={[requireLogin]}> */}
+          <Provider store={store}>
+            <Navigation />
+            <Switch>
+              <Route path="/map">
+                <Map />
+              </Route>
+              <Route path="/family/:id">
+                <Family />
+              </Route>
+              <Route path="/search">
+                <Search />
+              </Route>
+              <Route path="/individual/form">
+                <InputIndividuals />
+              </Route>
+              <Route path="/individuals/:id">
+                <Individuals />
+              </Route>
+              <Route path="/dashboard">
+                <Index />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/register">
+                <Register />
+              </Route>
+              <Route exact path="/">
+                <Login />
+              </Route>
+            </Switch>
+          </Provider>
+        {/* </GuardProvider> */}
       </Router>
     </div>
   );

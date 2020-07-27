@@ -22,6 +22,7 @@ export default () => {
   return (
     <>
       {/* Input Form */}
+      <h1>INI FORM EDIT</h1>
       <div className="loginPicture" style={{ alignItems: "center" }}>
         <Row>
           <Col sm={6}></Col>
