@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Container, Row, Col} from "react-bootstrap";
 import ListIndividual from "../components/ListIndividuals";
 // import React from "react";
 import {
@@ -14,18 +13,30 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { fetchData } from "../store/actions"
+
 export default () => {
+
+  const dispatch = useDispatch()
   const history = useHistory();
+  const individuals = useSelector(state=> state.GameReducer.individuals)
+
   const toRegister = () => {
     history.push("/register");
   };
+
+  useEffect(()=> {
+    console.log('USE EFFECT ADD')
+    dispatch(fetchData())
+  }, [])
+
   return (
     <>
       {/* Input Form */}
       <div className="loginPicture" style={{ alignItems: "center" }}>
         <Row>
           <Col sm={6}></Col>
-          <Col sm={6} style={{ marginTop: "200px" }}>
+          <Col sm={6} style={{ marginTop: "50px" }}>
             <Col sm={8}>
               <Form>
                 <Form.Group controlId="formBasicEmail" className="input">
@@ -74,7 +85,12 @@ export default () => {
       </div>
       {/* Cards */}
       <Container>
-        <ListIndividual />
+        <h1 className="text-center">Members</h1><hr></hr>
+        <CardColumns>
+          {individuals.map((indivs, idx) => { 
+              return <ListIndividual key={idx} individuals={indivs}></ListIndividual>
+          })}
+        </CardColumns>
       </Container>
       {/* Footer */}
       <div className="eight" id="aboutUsSec"></div>

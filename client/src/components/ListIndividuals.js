@@ -27,26 +27,24 @@ export default (props) => {
   return (
     <>
       {/* <Card className="kartu" style={{ marginBottom: 30 + 'px'}}> */}
-      <h1 className="text-center">Members</h1>
-      <hr></hr>
-      <CardColumns>
         <Card>
           <Card.Img
             variant="top"
-            src="https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-4.png"
+            src={props.individuals.profile_pic}
           />
           <Card.Body>
-            <Card.Title>Card title that wraps to a new line</Card.Title>
-            <Card.Text>
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
+            <Card.Title>{props.individuals.name}</Card.Title>
+            <Card.Text>DoB: {props.individuals.name}</Card.Text>
+            <Card.Text>Gender: {props.individuals.gender}</Card.Text>
+            <Card.Text>DoB, City: {props.individuals.date_of_birth}, {props.individuals.place_of_birth}</Card.Text>
+            <Card.Text>Location: {JSON.stringify(props.individuals.Location)}</Card.Text>
+            <Card.Text>Instagram: @{props.individuals.instagram}</Card.Text>
+            <Card.Text>Facebook: {props.individuals.facebook}</Card.Text>
             <i className="fa fa-map-marker fa-2x"></i>
             <i className="fa fa-instagram fa-2x ml-2"></i>
           </Card.Body>
         </Card>
-        <Card>
+        {/* <Card>
           <Card.Img
             variant="top"
             src="https://mybeautybrides.net/images/84-1566726567078.jpg"
@@ -117,18 +115,7 @@ export default (props) => {
             <i className="fa fa-map-marker fa-2x"></i>
             <i className="fa fa-instagram fa-2x ml-2"></i>
           </Card.Body>
-        </Card>
-      </CardColumns>
-      {/* <Card.Img variant="top" src={props.game.img} style={{height: 300 + 'px'}}/>
-          <Card.Body>
-            <Card.Title className="card-title text-center">{props.game.name}</Card.Title>
-            <div className="d-flex justify-content-between align-items-center">
-              <div className="btn-group mx-auto">
-                <Link to={`/games/${props.game.id}`} className="btn btn-md btn-warning">Game Detail</Link>
-                {keadaan && ( <Button variant="dark" onClick={() => addFavourite()}>My Favourite</Button> )}
-              </div>
-            </div>
-          </Card.Body> */}
+        </Card> */}
     </>
   );
 };

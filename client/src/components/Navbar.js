@@ -9,8 +9,10 @@ import {
 } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+// import Swal from 'sweetalert2'
 
 export default function Navigation() {
+
   const history = useHistory();
   // const { theme, changeTheme } = useContext(MyContext);
   const toIndividualPage = () => {
@@ -22,12 +24,17 @@ export default function Navigation() {
   const toLogin = () => {
     history.push("/login");
   };
+  const toLogout = () => {
+    localStorage.clear()
+    history.push("/login");
+  };
   const toMap = () => {
     history.push("/map");
   };
   const findData = (e) => {
     // LOGIC SEARCH
   };
+
   return (
     <div style={{ zIndex: 100, width: "100vw" }}>
       <Navbar
@@ -93,11 +100,22 @@ export default function Navigation() {
               className="btn btn-outline-light ml-2"
               /* onClick={changeTheme} */
             >
-              Change Theme
+              Theme
             </button>
+            {!localStorage.username &&
             <Navbar.Brand>
               <i className="fa fa-user-circle fa-2x ml-2" onClick={toLogin}></i>
-            </Navbar.Brand>
+            </Navbar.Brand>}
+            {localStorage.username &&
+            <Navbar.Brand>
+              <Button variant="dark" className="btn ml-2">
+              {localStorage.username}
+            </Button>
+            </Navbar.Brand>}
+            {localStorage.username &&
+            <Navbar.Brand>
+              <i className="fa fa-sign-out fa-2x " onClick={toLogout}></i>
+            </Navbar.Brand>}
           </Form>
         </Navbar.Collapse>
       </Navbar>
