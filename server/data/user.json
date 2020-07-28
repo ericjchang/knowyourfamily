@@ -1,0 +1,18 @@
+[
+  {
+    "email": "john_doe@mail.com",
+    "password": "$2a$05$WezJScN3LTkGJlBFb/qB4eWooAcuo7kfrEerMgBy8i31qbsPQIGV2"
+  },
+  {
+    "email": "jane_doe@mail.com",
+    "password": "$2a$05$192hrnZWkpwyi8x53uqH..1DztYmPJhNeB2/uk5TIN8h7W4VV7jcC"
+  },
+  {
+    "email": "papa_doe@mail.com",
+    "password": "$2a$05$lFXWVg3nXVlVVhk.w03WeOb/z7.llpGM.QcwyLdWhuseayjjDodYO"
+  },
+  {
+    "email": "mama_doe@mail.com",
+    "password": "$2a$05$lFXWVg3nXVlVVhk.w03WeOb/z7.llpGM.QcwyLdWhuseayjjDodYO"
+  }
+]
