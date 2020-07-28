@@ -1,6 +1,6 @@
 const defaultState = {
   keadaan: true,
-  games: [],
+  individuals: ['HAHIHIHU'],
   searchGame: [],
   loading: true,
   detailGame: {},
@@ -13,7 +13,7 @@ const GameReducer = (state = defaultState, action) => {
     case "NYALAKAN_KEADAAN":
       return { ...state, keadaan: true };
     case "FETCH_DATA":
-      return { ...state, games: action.data, loading: false };
+      return { ...state, individuals: action.data, loading: false };
     case "GAME_DETAIL":
       return { ...state, detailGame: action.data, loadingInDetailGame: false };
     case "SEARCH_GAME":

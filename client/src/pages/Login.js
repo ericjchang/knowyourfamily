@@ -1,24 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser } from "../store/actions"
+
+
 export default () => {
   const history = useHistory();
+  const dispatch = useDispatch()
+  const [userName, setUserName] = useState('')
+  const [userPassword, setUserPassword] = useState('')
   const toRegister = () => {
     history.push("/register");
   };
+
+  const submitLogin = (e) => {
+    e.preventDefault()
+    console.log('isi innput SUBMIT', userName, userPassword)
+    localStorage.username = userName
+    localStorage.password = userPassword
+    if(localStorage.username){
+      // dispatch(loginUser)
+      history.push("/dashboard");
+    } else { alert('please input name and password')}
+  }
+
+  useEffect(()=> {
+    dispatch(loginUser)
+
+    if (localStorage.getItem("reloaded")) {
+      localStorage.removeItem("reloaded");
+    } else {
+      localStorage.setItem("reloaded", "1")
+      window.location.reload();
+    }
+  }, [])
   return (
     <>
       <div className="loginPicture" style={{ alignItems: "center" }}>
         <Row>
           <Col sm={6}></Col>
           <Col sm={6} style={{ marginTop: "200px" }}>
-            <Form>
+            <Form onSubmit={submitLogin}>
               <Form.Group controlId="formBasicEmail" className="input">
                 <Form.Control
-                  type="email"
+                  type="text"
                   placeholder="Username"
                   className="inputHeight"
+                  onChange={(e)=>{ setUserName(e.target.value) }}
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword" className="input">
@@ -26,9 +56,10 @@ export default () => {
                   type="password"
                   placeholder="Password"
                   className="inputHeight"
+                  onChange={(e)=>{ setUserPassword(e.target.value) }}
                 />
               </Form.Group>
-              <Button variant="flat" size="xl" type="submit">
+              <Button variant="flat" size="xl" type="submit" onClick={submitLogin}>
                 SUBMIT
               </Button>
               <Button variant="flat" size="xl" onClick={toRegister}>

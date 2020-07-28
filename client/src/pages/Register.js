@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 export default () => {
   const history = useHistory();
-  const toLogin = () => {
-    history.push("/login");
-  };
+  const [userName, setUserName] = useState('')
+  const [userPassword, setUserPassword] = useState('')
+
+  const toLogin = () => { history.push("/login") };
+
+  const submitRegister = (e) =>{
+    // e.preventDefault()
+    if(userName === '' || userPassword === '') alert('please input name and password')
+    else {
+      alert('Succesfully registered an account')
+      setUserName('')
+      setUserPassword('')
+    }
+  }
+
   return (
     <>
       <div className="registerPicture" style={{ alignItems: "center" }}>
@@ -15,9 +27,10 @@ export default () => {
             <Form>
               <Form.Group controlId="formBasicEmail" className="input">
                 <Form.Control
-                  type="email"
+                  type="text"
                   placeholder="Username"
                   className="inputHeight"
+                  onChange={(e)=>{ setUserName(e.target.value) }}
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword" className="input">
@@ -25,9 +38,10 @@ export default () => {
                   type="password"
                   placeholder="Password"
                   className="inputHeight"
+                  onChange={(e)=>{ setUserPassword(e.target.value) }}
                 />
               </Form.Group>
-              <Button variant="flat" size="xl" type="submit">
+              <Button variant="flat" size="xl" type="submit" onClick={submitRegister}>
                 SUBMIT
               </Button>
               <Button variant="flat" size="xl" onClick={toLogin}>
