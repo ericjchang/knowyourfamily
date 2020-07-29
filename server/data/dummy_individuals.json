@@ -5,10 +5,6 @@
     "date_of_birth": "1997-12-27",
     "place_of_birth": "London",
     "address": "4th Sesame St. Avenue",
-    "location": {
-      "lat": -5342.45,
-      "lon": 213123.35
-    },
     "instagram": "",
     "facebook": "John Doe",
     "UserId": 1
@@ -19,10 +15,6 @@
     "date_of_birth": "1967-12-23",
     "place_of_birth": "Manchester",
     "address": "1st Sesame St. Avenue",
-    "location": {
-      "lat": "",
-      "lon": ""
-    },
     "instagram": "",
     "facebook": "",
     "UserId": 1
@@ -33,10 +25,6 @@
     "date_of_birth": "2000-12-23",
     "place_of_birth": "London",
     "address": "45 Silk St.",
-    "location": {
-      "lat": "",
-      "lon": ""
-    },
     "instagram": "",
     "facebook": "",
     "UserId": 2

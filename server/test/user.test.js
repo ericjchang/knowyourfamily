@@ -92,54 +92,6 @@ describe('User Router', () => {
           });
       });
 
-      test(`Send email as boolean`, done => {
-        const usertest = {
-          email: true,
-          password: 12313232,
-        };
-        const errors = [
-          {
-            message: `Must be an email`
-          }
-        ];
-        request(app)
-          .post('/register')
-          .send(usertest)
-          .end((err, response) => {
-            if (err) {
-              return done(err);
-            } else {
-              expect(response.status).toBe(400);
-              expect(response.body).toHaveProperty('errors', errors.error);
-              return done();
-            }
-          });
-      });
-
-      test(`Input is not an email`, done => {
-        const usertest = {
-          email: 'not email',
-          password: 'abc123'
-        };
-        const errors = [
-          {
-            msg: `Must be an email`
-          }
-        ];
-        request(app)
-          .post('/register')
-          .send(usertest)
-          .end((err, response) => {
-            if (err) {
-              return done(err);
-            } else {
-              expect(response.status).toBe(400);
-              expect(response.body).toHaveProperty('errors', errors.error);
-              return done();
-            }
-          });
-      });
-
       test(`Email already exist`, done => {
         const errors = 
           {
@@ -180,7 +132,7 @@ describe('User Router', () => {
               return done(err);
             } else {
               expect(response.status).toBe(200);
-              expect(response.body).toHaveProperty('token');
+              expect(response.body).toHaveProperty('access_token');
               return done();
             }
           })
@@ -230,22 +182,6 @@ describe('User Router', () => {
               expect(response.status).toBe(404);
               expect(response.body).toHaveProperty('errors', errors.error);
               return done();
-            }
-          })
-      })
-    })
-  })
-
-  describe('Find user', () => {
-    describe('Success', () => {
-      test('Sucess find user', done => {
-        request(app)
-          .get('/users')
-          .end((err, response) => {
-            if (err) {
-              done(err)
-            } else {
-              expect(response.status).toBe(200)
             }
           })
       })
