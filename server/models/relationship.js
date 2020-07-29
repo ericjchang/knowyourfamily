@@ -1,54 +1,29 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Relationship extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-      Relationship.belongsTo(models.Individual);
-      Relationship.belongsTo(models.Relation_Type);
-      Relationship.belongsTo(models.Role_Type)
+  const { Model } = sequelize.Sequelize;
+
+  class Relationship extends Model {}
+
+  Relationship.init(
+    {
+      IndividualId1: DataTypes.INTEGER,
+      IndividualId2: DataTypes.INTEGER,
+      RoleTypeId: DataTypes.INTEGER,
+      status: DataTypes.BOOLEAN,
+    },
+    {
+      sequelize,
+      hooks: {
+        beforeCreate: (relation) => {
+          relation.status = true;
+        },
+      },
     }
+  );
+  Relationship.associate = function (models) {
+    Relationship.belongsTo(models.Individual, { as: 'Individual1', foreignKey: { name: 'IndividualId1' } });
+    Relationship.belongsTo(models.Individual, { as: 'Individual2', foreignKey: { name: 'IndividualId2' } });
+    Relationship.belongsTo(models.Role_Type);
   };
-  Relationship.init({
-    detail: DataTypes.STRING,
-    IndividualId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Individuals',
-        key: 'id'
-      },
-      onUpdate: 'Cascade',
-      onDelete: 'Cascade'
-    },
-    Relation_TypeId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Relation_Types',
-        key: 'id'
-      },
-      onUpdate: 'Cascade',
-      onDelete: 'Cascade'
-    },
-    Role_TypeId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Role_Types',
-        key: 'id'
-      },
-      onUpdate: 'Cascade',
-      onDelete: 'Cascade'
-    },
-    status: DataTypes.BOOLEAN
-  }, {
-    sequelize,
-    modelName: 'Relationship',
-  });
   return Relationship;
 };
