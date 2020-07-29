@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       hooks: {
         beforeCreate: (relation) => {
-          relation.status = false;
+          relation.status = true;
         },
       },
     }
