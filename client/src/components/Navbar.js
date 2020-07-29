@@ -12,7 +12,6 @@ import { useSelector, useDispatch } from "react-redux";
 // import Swal from 'sweetalert2'
 
 export default function Navigation() {
-
   const history = useHistory();
   // const { theme, changeTheme } = useContext(MyContext);
   const toIndividualPage = () => {
@@ -25,7 +24,7 @@ export default function Navigation() {
     history.push("/login");
   };
   const toLogout = () => {
-    localStorage.clear()
+    localStorage.clear();
     history.push("/login");
   };
   const toMap = () => {
@@ -36,7 +35,7 @@ export default function Navigation() {
   };
 
   return (
-    <div style={{ zIndex: 100, width: "100vw" }}>
+    <div style={{ zIndex: 100, width: "100%" }}>
       <Navbar
         expand="lg"
         style={{
@@ -46,11 +45,7 @@ export default function Navigation() {
         }}
       >
         <Navbar.Brand>
-          <Link
-            to="/dashboard" /* style={{ color: `${themes[theme].background}` }} */
-          >
-            Famtree
-          </Link>
+          <Link to="/dashboard">Famtree</Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -60,9 +55,6 @@ export default function Navigation() {
               <NavDropdown title="Create" id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={toIndividualPage}>
                   Create a Profile
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/inputIndividual">Create a Family</Link>
                 </NavDropdown.Item>
               </NavDropdown>
             )}
@@ -102,20 +94,26 @@ export default function Navigation() {
             >
               Theme
             </button>
-            {!localStorage.username &&
-            <Navbar.Brand>
-              <i className="fa fa-user-circle fa-2x ml-2" onClick={toLogin}></i>
-            </Navbar.Brand>}
-            {localStorage.username &&
-            <Navbar.Brand>
-              <Button variant="dark" className="btn ml-2">
-              {localStorage.username}
-            </Button>
-            </Navbar.Brand>}
-            {localStorage.username &&
-            <Navbar.Brand>
-              <i className="fa fa-sign-out fa-2x " onClick={toLogout}></i>
-            </Navbar.Brand>}
+            {!localStorage.username && (
+              <Navbar.Brand>
+                <i
+                  className="fa fa-user-circle fa-2x ml-2"
+                  onClick={toLogin}
+                ></i>
+              </Navbar.Brand>
+            )}
+            {localStorage.username && (
+              <Navbar.Brand>
+                <Button variant="dark" className="btn ml-2">
+                  {localStorage.username}
+                </Button>
+              </Navbar.Brand>
+            )}
+            {localStorage.username && (
+              <Navbar.Brand>
+                <i className="fa fa-sign-out fa-2x " onClick={toLogout}></i>
+              </Navbar.Brand>
+            )}
           </Form>
         </Navbar.Collapse>
       </Navbar>

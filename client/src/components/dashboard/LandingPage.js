@@ -13,7 +13,7 @@ export default function LandingPage() {
   return (
     <div>
       <div
-        class="container-fluid text-center"
+        className="container-fluid text-center"
         style={{
           backgroundImage: "url('https://i.imgur.com/2ZUjKT2.png')",
           backgroundSize: "cover",
@@ -51,7 +51,7 @@ export default function LandingPage() {
           </p>
           <Link to="/individual/form">
             <button
-              class="btn"
+              className="btn"
               style={{
                 alignSelf: "center",
                 borderColor: "#C2006D",

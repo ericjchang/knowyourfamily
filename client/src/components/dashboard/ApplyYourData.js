@@ -2,17 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function ApplyYourData() {
+  const changeColor = (e) => {
+    e.target.style.backgroundColor = "#D58A00";
+    return;
+  };
+  const changeColor1 = (e) => {
+    e.target.style.backgroundColor = "transparent";
+    return;
+  };
   return (
     <div>
       <div
-        class="container-fluid text-center"
+        className="container-fluid justify-content-center text-center"
         style={{
           backgroundImage: "url('https://i.imgur.com/SjVBvty.png')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundAttachment: "scroll",
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "start",
           backgroundPosition: "center",
           width: "100%",
         }}
@@ -25,37 +33,35 @@ export default function ApplyYourData() {
             flexDirection: "column",
             flexWrap: "wrap",
             height: "100vh",
+            justifyContent: "center",
           }}
         >
-          <h1 style={{ fontSize: "3vw", marginTop: "1vw" }}>
+          <h1 style={{ fontSize: "3vw", marginTop: "0vw" }}>
             <b>APPLY YOUR DATA</b>
           </h1>
-          <div
-            className="d-flex justify-content-around container-fluid"
-            style={{ marginTop: "20vw" }}
-          >
-            <div style={{ width: "18rem" }}>
-              <div class="card-body">
-                <h5 class="card-title">Personal Name</h5>
-                <p class="card-text text-muted">
+          <div className="d-flex container-fluid" style={{ marginTop: "20vw" }}>
+            <div style={{ width: "20vw" }}>
+              <div className="card-body">
+                <h5 className="card-title">Personal Name</h5>
+                <p className="card-text text-muted">
                   Let us know what you want to be called. It's better using your
                   real name
                 </p>
               </div>
             </div>
-            <div style={{ width: "18rem" }}>
-              <div class="card-body">
-                <h5 class="card-title">Family Name</h5>
-                <p class="card-text text-muted">
+            <div style={{ width: "20vw" }}>
+              <div className="card-body">
+                <h5 className="card-title">Family Name</h5>
+                <p className="card-text text-muted">
                   Here is the most important part, help us determine your
                   classification through your family name
                 </p>
               </div>
             </div>
-            <div style={{ width: "18rem" }}>
-              <div class="card-body">
-                <h5 class="card-title">Address</h5>
-                <p class="card-text text-muted">
+            <div style={{ width: "20vw" }}>
+              <div className="card-body">
+                <h5 className="card-title">Address</h5>
+                <p className="card-text text-muted">
                   Address based on your civillian ID ( KTP )
                 </p>
               </div>
@@ -63,9 +69,16 @@ export default function ApplyYourData() {
           </div>
           <Link to="/individual/form">
             <button
-              style={{ width: "13vh", height: "5vh", alignSelf: "center" }}
+              className="btn"
+              style={{
+                borderColor: "#C2006D",
+                borderWidth: "3px",
+                borderRadius: "20px",
+              }}
+              onMouseEnter={changeColor}
+              onMouseLeave={changeColor1}
             >
-              Button
+              Input Data
             </button>
           </Link>
         </div>

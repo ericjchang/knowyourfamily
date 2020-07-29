@@ -4,7 +4,7 @@ export default function WhatDoWeOffer() {
   return (
     <div>
       <div
-        class="container-fluid text-center"
+        className="container-fluid text-center"
         style={{
           backgroundImage: "url('https://i.imgur.com/vEXdo4I.png')",
           /* 
@@ -44,13 +44,6 @@ export default function WhatDoWeOffer() {
               cillum amet enim.
             </p>
           </div>
-          <a href="#landing">
-            <button
-              style={{ width: "13vh", height: "5vh", alignSelf: "center" }}
-            >
-              Button
-            </button>
-          </a>
         </div>
       </div>
     </div>

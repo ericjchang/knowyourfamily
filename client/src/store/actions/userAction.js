@@ -27,22 +27,34 @@
 // DELETE : /family/:id --> untuk decline relationship, id yg di pake, id relationship
 
 import axios from "axios";
-const dummyUrl = 'http://localhost:3003/users'
+const dummyUrl = "http://localhost:3000/";
 
-export function loginUser(){
-  console.log('MASUK ACTION loginUser')
-
-}
-
-export function fetchData(url) {
-  console.log('MASUK ACTION FETCH DATA')
+export function login(data) {
+  console.log("masuk login", data);
   return (dispatch) => {
     axios
-      .get(`${dummyUrl}`)
+      .post(`${dummyUrl}/login`, data)
       .then((response) => {
-        console.log('ALL USERS FROM ACTION STORE >>>', response.data)
+        console.log("sukses");
         dispatch({
-          type: "FETCH_DATA",
+          type: "USER_LOGIN",
+          data: response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+}
+export function register(data) {
+  console.log("masuk register", data);
+  return (dispatch) => {
+    axios
+      .post(`${dummyUrl}/register`, data)
+      .then((response) => {
+        console.log("sukses");
+        dispatch({
+          type: "USER_REGISTER",
           data: response.data,
         });
       })
@@ -52,16 +64,33 @@ export function fetchData(url) {
   };
 }
 
-export function GameDetail(url, id) {
+export function editUser(id, data) {
   return (dispatch) => {
     axios
-      .get(`${dummyUrl}/${id}`)
+      .put(`${dummyUrl}/user/${id}`, data)
       .then((response) => {
-        console.log('USER DETAIL FROM STORE >>>', response.data)
-        // dispatch({
-        //   type: "GAME_DETAIL",
-        //   data: response.data,
-        // });
+        console.log("sukses");
+        dispatch({
+          type: "USER_EDIT",
+          msg: response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+}
+
+export function getUserById(id) {
+  return (dispatch) => {
+    axios
+      .get(`${dummyUrl}/user/${id}`)
+      .then((response) => {
+        console.log("sukses");
+        dispatch({
+          type: "GET_USER_BY_ID",
+          data: response.data,
+        });
       })
       .catch((err) => {
         console.log(err);

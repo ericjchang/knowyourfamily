@@ -3,39 +3,43 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { loginUser } from "../store/actions"
-
+import { login } from "../store/actions/userAction";
 
 export default () => {
   const history = useHistory();
-  const dispatch = useDispatch()
-  const [userName, setUserName] = useState('')
-  const [userPassword, setUserPassword] = useState('')
+  const dispatch = useDispatch();
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
   const toRegister = () => {
     history.push("/register");
   };
 
   const submitLogin = (e) => {
-    e.preventDefault()
-    console.log('isi innput SUBMIT', userName, userPassword)
-    localStorage.username = userName
-    localStorage.password = userPassword
-    if(localStorage.username){
-      // dispatch(loginUser)
+    e.preventDefault();
+    console.log("isi innput SUBMIT", userEmail, userPassword);
+    localStorage.username = userEmail;
+    localStorage.password = userPassword;
+    if (localStorage.username) {
+      let userData = {
+        email: userEmail,
+        password: userPassword,
+      };
+      console.log(userData);
+      dispatch(login(userData));
       history.push("/dashboard");
-    } else { alert('please input name and password')}
-  }
+    } else {
+      alert("please input name and password");
+    }
+  };
 
-  useEffect(()=> {
-    dispatch(loginUser)
-
+  useEffect(() => {
     if (localStorage.getItem("reloaded")) {
       localStorage.removeItem("reloaded");
     } else {
-      localStorage.setItem("reloaded", "1")
+      localStorage.setItem("reloaded", "1");
       window.location.reload();
     }
-  }, [])
+  }, []);
   return (
     <>
       <div className="loginPicture" style={{ alignItems: "center" }}>
@@ -45,10 +49,12 @@ export default () => {
             <Form onSubmit={submitLogin}>
               <Form.Group controlId="formBasicEmail" className="input">
                 <Form.Control
-                  type="text"
+                  type="email"
                   placeholder="Username"
                   className="inputHeight"
-                  onChange={(e)=>{ setUserName(e.target.value) }}
+                  onChange={(e) => {
+                    setUserEmail(e.target.value);
+                  }}
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword" className="input">
@@ -56,10 +62,17 @@ export default () => {
                   type="password"
                   placeholder="Password"
                   className="inputHeight"
-                  onChange={(e)=>{ setUserPassword(e.target.value) }}
+                  onChange={(e) => {
+                    setUserPassword(e.target.value);
+                  }}
                 />
               </Form.Group>
-              <Button variant="flat" size="xl" type="submit" onClick={submitLogin}>
+              <Button
+                variant="flat"
+                size="xl"
+                type="submit"
+                onClick={submitLogin}
+              >
                 SUBMIT
               </Button>
               <Button variant="flat" size="xl" onClick={toRegister}>

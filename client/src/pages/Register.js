@@ -1,22 +1,35 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { register } from "../store/actions/userAction";
+
 export default () => {
   const history = useHistory();
-  const [userName, setUserName] = useState('')
-  const [userPassword, setUserPassword] = useState('')
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const dispatch = useDispatch();
 
-  const toLogin = () => { history.push("/login") };
+  const toLogin = () => {
+    history.push("/login");
+  };
 
-  const submitRegister = (e) =>{
-    // e.preventDefault()
-    if(userName === '' || userPassword === '') alert('please input name and password')
+  const submitRegister = (e) => {
+    e.preventDefault();
+    if (userEmail === "" || userPassword === "")
+      alert("please input name and password");
     else {
-      alert('Succesfully registered an account')
-      setUserName('')
-      setUserPassword('')
+      let userData = {
+        username: userEmail,
+        password: userPassword,
+      };
+      console.log(userData);
+      //alert("Succesfully registered an account"); ===> ganti swal
+      setUserEmail("");
+      setUserPassword("");
+      dispatch(register(userData));
     }
-  }
+  };
 
   return (
     <>
@@ -27,10 +40,12 @@ export default () => {
             <Form>
               <Form.Group controlId="formBasicEmail" className="input">
                 <Form.Control
-                  type="text"
+                  type="email"
                   placeholder="Username"
                   className="inputHeight"
-                  onChange={(e)=>{ setUserName(e.target.value) }}
+                  onChange={(e) => {
+                    setUserEmail(e.target.value);
+                  }}
                 />
               </Form.Group>
               <Form.Group controlId="formBasicPassword" className="input">
@@ -38,10 +53,17 @@ export default () => {
                   type="password"
                   placeholder="Password"
                   className="inputHeight"
-                  onChange={(e)=>{ setUserPassword(e.target.value) }}
+                  onChange={(e) => {
+                    setUserPassword(e.target.value);
+                  }}
                 />
               </Form.Group>
-              <Button variant="flat" size="xl" type="submit" onClick={submitRegister}>
+              <Button
+                variant="flat"
+                size="xl"
+                type="submit"
+                onClick={submitRegister}
+              >
                 SUBMIT
               </Button>
               <Button variant="flat" size="xl" onClick={toLogin}>

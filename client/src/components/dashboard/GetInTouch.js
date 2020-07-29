@@ -4,7 +4,7 @@ export default function ApplyYourData() {
   return (
     <div>
       <div
-        class="container-fluid text-center"
+        className="container-fluid text-center"
         style={{
           backgroundImage: "url('https://i.imgur.com/iwIGbwh.png')",
           backgroundSize: "cover",
@@ -18,6 +18,7 @@ export default function ApplyYourData() {
         id="getintouch"
       >
         <div
+          className="container"
           style={{
             display: "flex",
             alignItems: "flex-start",
@@ -25,10 +26,11 @@ export default function ApplyYourData() {
             flexWrap: "wrap",
             height: "100vh",
             marginLeft: "10vh",
+            backgroundColor: "red",
           }}
         >
-          <div>
-            <h1 style={{ fontSize: "2vw", marginTop: "2vw" }}>
+          <div style={{ marginTop: "2vw" }}>
+            <h1 style={{ fontSize: "2vw" }}>
               <b>Mailing Address</b>
             </h1>
             <div style={{ textAlign: "justify", width: "55vw" }}>
@@ -39,10 +41,10 @@ export default function ApplyYourData() {
             </div>
           </div>
           <div>
-            <h1 style={{ fontSize: "2vw", marginTop: "2vw" }}>
+            <h1 style={{ fontSize: "2vw" }}>
               <b>Email Address</b>
             </h1>
-            <div style={{ textAlign: "justify", width: "55vw" }}>
+            <div style={{ textAlign: "justify" }}>
               <p style={{ fontSize: "1.5vw" }} className="my-3 text-muted">
                 Famtree@gmail.com
               </p>
@@ -52,7 +54,7 @@ export default function ApplyYourData() {
             <h1 style={{ fontSize: "2vw", marginTop: "2vw" }}>
               <b>Mobile Number</b>
             </h1>
-            <div style={{ textAlign: "justify", width: "55vw" }}>
+            <div style={{ textAlign: "justify" }}>
               <p style={{ fontSize: "1.5vw" }} className="my-3 text-muted">
                 021-1982-7124
               </p>

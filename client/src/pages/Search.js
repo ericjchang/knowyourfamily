@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchData } from "../store/actions/individualAction";
 export default function Search() {
+  const results = useSelector((state) => state.IndividualReducer.individuals);
   const [input, setInput] = useState("");
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
+
+  console.log(results, "ini results");
   const handleInput = (e) => {
     let input = e.target.value;
     setInput(input);
@@ -10,19 +19,19 @@ export default function Search() {
 
   const search = (e) => {
     e.preventDefault();
-    //dispatch action endpoint search
+    dispatch(fetchData);
   };
   return (
     <div className="container my-3">
       <form className="mx-3">
         <div className="form-group">
-          <label for="exampleInputEmail1">Search</label>
+          <label for="exampleInputEmail1">Family</label>
           <input
             type="search"
             className="form-control"
             id="search"
             onChange={handleInput}
-            placeholder="name, family name, etc."
+            placeholder="name.."
           />
         </div>
         <button type="submit" className="btn btn-primary" onClick={search}>
@@ -33,69 +42,40 @@ export default function Search() {
         className="container d-flex align-content-around flex-wrap my-3"
         style={{
           border: "2px solid black",
-          overflowX: "scroll",
-          height: "35vh",
+          overflowY: "scroll",
+          height: "70vh",
         }}
       >
-        <div className="container d-flex align-content-around flex-wrap my-3">
-          <div
-            class="card"
-            style={{
-              width: "18rem",
-              margin: "auto",
-              marginTop: "3vh",
-              marginBottom: "3vh",
-            }}
-          >
-            <img className="card-img-top" src="..." alt="Card cap" />
-            <div className="card-body">
-              <Link to="/individual/:id">
-                <h5 className="card-title">--Nama Individu--</h5>
-              </Link>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <Link href="/individual/:id" className="btn btn-primary">
-                check them
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="container d-flex align-content-around flex-wrap my-3"
-        style={{
-          border: "2px solid black",
-          overflowX: "scroll",
-          height: "35vh",
-        }}
-      >
-        <div className="container d-flex align-content-around flex-wrap my-3">
-          <div
-            class="card"
-            style={{
-              width: "18rem",
-              margin: "auto",
-              marginTop: "3vh",
-              marginBottom: "3vh",
-            }}
-          >
-            <img className="card-img-top" src="..." alt="Card cap" />
-            <div className="card-body">
-              <Link to="/individual/:id">
-                <h5 className="card-title">--Nama Individu--</h5>
-              </Link>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <Link href="/individual/:id" className="btn btn-primary">
-                check them
-              </Link>
-            </div>
-          </div>
-        </div>
+        {results ? (
+          results.map((e) => {
+            return (
+              <div
+                class="card"
+                style={{
+                  width: "18rem",
+                  margin: "auto",
+                  marginTop: "3vh",
+                  marginBottom: "3vh",
+                }}
+              >
+                <img
+                  class="card-img-top"
+                  src="https://flexgroup.nz/wp-content/uploads/2018/05/dummy-image.jpg"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{e.name}</h5>
+                  <p class="card-text">{e.Address}</p>
+                  <Link to={`/individuals/${e.id}`} class="btn btn-primary">
+                    User Info
+                  </Link>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <h1>user tidak ditemukan</h1>
+        )}
       </div>
     </div>
   );

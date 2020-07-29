@@ -4,7 +4,7 @@ export default function Testimonies() {
   return (
     <div>
       <div
-        class="container-fluid text-center"
+        className="container-fluid text-center"
         style={{
           backgroundImage: "url('https://i.imgur.com/TG2D35O.png')",
           /* backgroundSize: "contain",
@@ -43,14 +43,6 @@ export default function Testimonies() {
               from an art gallery. Seems like it runs in the family.
             </p>
           </div>
-          <a href="#landing">
-            <button
-              className="my-3"
-              style={{ width: "13vh", height: "5vh", alignSelf: "center" }}
-            >
-              Button
-            </button>
-          </a>
         </div>
       </div>
     </div>

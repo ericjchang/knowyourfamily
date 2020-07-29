@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import MapTools from "../components/MapTools";
-import Peta from "../components/AddForm";
+import EditForm from "../components/EditForm";
+
 class Map extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -12,21 +12,12 @@ class Map extends Component {
   render() {
     return (
       <div style={{ margin: "100px" }}>
-        <MapTools
-          google={this.props.google}
+        <EditForm
           center={{ lat: -6.229642, lng: 106.7588609 }}
           height="300px"
           zoom={15}
         />
         <br />
-        {/* 
-        <h1>==================================</h1>
-        <Peta
-          google={this.props.google}
-          center={{ lat: -6.229642, lng: 106.7588609 }}
-          height="300px"
-          zoom={15}
-        /> */}
       </div>
     );
   }
