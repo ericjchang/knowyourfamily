@@ -3,7 +3,7 @@ const Op = require('sequelize').Op;
 
 class RelationshipController {
   static findAll(req, res, next) {
-    const id = req.userData.id;
+    const id = req.headers.userid;
     Relationship.findAll({
       where: {
         [Op.or]: {
@@ -13,6 +13,10 @@ class RelationshipController {
         status: true,
       },
       include: [
+        {
+          model: Role_Type,
+          attributes: ['description'],
+        },
         {
           model: Individual,
           as: 'Individual1',
@@ -24,15 +28,21 @@ class RelationshipController {
       ],
     })
       .then((result) => {
-        res.status(200).json(result);
+        const data = [];
+        result.forEach((el) => {
+          if (el.Individual1.id !== +id) data.push({ data: el.Individual1, role: el.Role_Type.description });
+          else data.push({ data: el.Individual2, role: el.Role_Type.description });
+        });
+        res.status(200).json(data);
       })
       .catch((err) => {
+        console.log(err);
         return next(err);
       });
   }
 
   static requested(req, res, next) {
-    const id = req.userData.id;
+    const id = req.header.userId;
     Relationship.findAll({
       where: {
         IndividualId2: id,
@@ -42,10 +52,6 @@ class RelationshipController {
         {
           model: Individual,
           as: 'Individual1',
-        },
-        {
-          model: Individual,
-          as: 'Individual2',
         },
       ],
     })
@@ -58,28 +64,13 @@ class RelationshipController {
       });
   }
 
-  static findOne(req, res, next) {
-    const { id } = req.params;
-    Relationship.findOne({
-      where: {
-        id,
-        status: true,
-      },
-    })
-      .then((result) => {
-        res.status(200).json(result);
-      })
-      .catch((err) => {
-        return next(err);
-      });
-  }
-
   static createRelationship(req, res, next) {
     const data = {
-      IndividualId1: req.userData.id,
-      IndividualId2: +req.body.id,
-      RoleTypeId: +req.body.Role_TypeId,
+      IndividualId1: +req.headers.userid, //id user yang lagi aktif
+      IndividualId2: +req.body.id, //id user yang mau di relation kan
+      RoleTypeId: +req.body.RoleTypeId, //role type
     };
+    console.log(data);
     Relationship.create(data)
       .then((result) => {
         res.status(201).json(result);
