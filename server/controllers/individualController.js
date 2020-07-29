@@ -4,15 +4,29 @@ const Op = require('sequelize').Op;
 class IndividualController {
   static findAll(req, res, next) {
     const keyword = req.query.search;
-    Individual.findAll({
-      where: keyword ? { name: { [Op.iLike]: `%${keyword}%` } } : null,
-    })
-      .then((result) => {
-        res.status(200).json(result);
+    const id = +req.userData.id;
+
+    if (keyword) {
+      Individual.findAll({
+        where: keyword ? { name: { [Op.iLike]: `%${keyword}%` } } : null,
       })
-      .catch((err) => {
-        return next(err);
-      });
+        .then((result) => {
+          res.status(200).json(result);
+        })
+        .catch((err) => {
+          return next(err);
+        });
+    } else {
+      Individual.findAll({
+        where: { UserId: id },
+      })
+        .then((result) => {
+          res.status(200).json(result);
+        })
+        .catch((err) => {
+          return next(err);
+        });
+    }
   }
 
   static findOne(req, res, next) {
