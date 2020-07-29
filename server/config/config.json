@@ -7,7 +7,7 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "ahmadalhq",
+    "username": "postgres",
     "password": "empatpuluh6",
     "database": "family_test",
     "host": "localhost",

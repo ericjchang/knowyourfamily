@@ -18,12 +18,50 @@ const individuals = require('../data/dummy_individuals.json').map(individual => 
   return individual;
 })
 
-const roles= require('../data/role.json').map(role => {
+const roles = require('../data/role.json').map(role => {
   role.createdAt = new Date();
   role.updatedAt = new Date();
   return role
 })
 
 describe('Relationship Test', () => {
-  beforeAll(done)
+  beforeAll(done => {
+    queryInterface.bulkInsert('Users', users, { returning: true })
+      .then(result => {
+
+      })
+  })
+
+  describe('Get all relationship', () => {
+    describe('Success', () => {
+      test('Should return all relationship', done => {
+        request(app)
+          .get('/family')
+          .set('')
+          .end((err, response) => {
+            if (err) {
+              return done(err);
+            } else {
+              expect(response.status).toBe(200);
+              return done();
+            }
+          })
+      })
+    })
+
+    describe('Fail', () => {
+      test('Should return failed', done => {
+        request(app)
+          .get('/family')
+          .end((err, response) => {
+            if (err) {
+              return done(err);
+            } else {
+              expect(response.status).toBe(400)
+              return done();
+            }
+          })
+      })
+    })
+  })
 })

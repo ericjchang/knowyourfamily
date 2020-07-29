@@ -52,7 +52,7 @@ describe('Individual Test', () => {
     describe('Success', () => {
       test('Should return all individuals from database', done => {
         request(app)
-          .get('/individuals')
+          .get('/individual')
           .set('token', token)
           .end((err, response) => {
             if (err) {
@@ -83,7 +83,7 @@ describe('Individual Test', () => {
           instagram: 'JaneDoe'
         }
         request(app)
-          .post('/individuals')
+          .post('/individual')
           .send(newIndividual)
           .set('token', token)
           .end((err, response) => {
@@ -130,7 +130,7 @@ describe('Individual Test', () => {
           address: 'Big Ben'
         }
         request(app)
-          .post('/individuals')
+          .post('/individual')
           .send(newIndividual)
           .set('token', token)
           .end((err, response) => {
@@ -170,7 +170,7 @@ describe('Individual Test', () => {
           address: 'Big Ben'
         }
         request(app)
-          .post('/individuals')
+          .post('/individual')
           .send(newIndividual)
           .set('token', token)
           .end((err, response) => {
@@ -210,7 +210,7 @@ describe('Individual Test', () => {
           address: 'Big Ben'
         }
         request(app)
-          .post('/individuals')
+          .post('/individual')
           .send(newIndividual)
           .set('token', token)
           .end((err, response) => {
@@ -250,7 +250,7 @@ describe('Individual Test', () => {
           address: 'Big Ben'
         }
         request(app)
-          .post('/individuals')
+          .post('/individual')
           .send(newIndividual)
           .set('token', token)
           .end((err, response) => {
@@ -290,7 +290,7 @@ describe('Individual Test', () => {
           address: ''
         }
         request(app)
-          .post('/individuals')
+          .post('/individual')
           .send(newIndividual)
           .set('token', token)
           .end((err, response) => {
@@ -316,7 +316,7 @@ describe('Individual Test', () => {
             address: 'Big Ben'
           }
           request(app)
-            .put(`/individuals/${individualId}`)
+            .put(`/individual/${individualId}`)
             .send(newIndividual)
             .set('token', token)
             .end((err, response) => {
@@ -349,7 +349,7 @@ describe('Individual Test', () => {
             message: 'Data Not Found'
           }
           request(app)
-            .put(`/individuals/${individualId}+1`)
+            .put(`/individual/${individualId}+1`)
             .send(newIndividual)
             .set('token', token)
             .end((err, response) => {
@@ -376,7 +376,7 @@ describe('Individual Test', () => {
             message: 'Unauthorized'
           }
           request(app)
-            .put(`/individuals/${individualId}`)
+            .put(`/individual/${individualId}`)
             .send(newIndividual)
             .set('token', token_err)
             .end((err, response) => {
@@ -396,7 +396,7 @@ describe('Individual Test', () => {
       describe('Success', () => {
         test('Should return success deleting individuals', done => {
           request(app)
-            .delete(`/individuals/${individualId}`)
+            .delete(`/individual/${individualId}`)
             .set('token', token)
             .end((err, response) => {
               if (err) {
@@ -416,7 +416,7 @@ describe('Individual Test', () => {
             message: 'Data Not Found'
           }
           request(app)
-            .delete(`/individuals/${individualId}+1`)
+            .delete(`/individual/${individualId}+1`)
             .set('token', token)
             .end((err, response) => {
               if (err) {
