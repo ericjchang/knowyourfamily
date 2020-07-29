@@ -15,6 +15,7 @@ import Map from "./pages/Map";
 import EditIndividual from "./pages/EditIndividual";
 import store from "./store";
 import InputIndividuals from "./pages/InputIndividuals";
+import SelectUser from "./pages/SelectUser";
 
 function App() {
   // const requireLogin = (to, from, next) => {
@@ -34,6 +35,9 @@ function App() {
         <Provider store={store}>
           <Navigation />
           <Switch>
+            <Route path="/user/select">
+              <SelectUser />
+            </Route>
             <Route path="/map">
               <Map />
             </Route>

@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { register } from "../store/actions/userAction";
+import Swal from "sweetalert2";
 
 export default () => {
   const history = useHistory();
@@ -20,7 +21,7 @@ export default () => {
       alert("please input name and password");
     else {
       let userData = {
-        username: userEmail,
+        email: userEmail,
         password: userPassword,
       };
       console.log(userData);
@@ -29,6 +30,8 @@ export default () => {
       setUserPassword("");
       dispatch(register(userData));
     }
+    Swal.fire("Great !", "Success Register", "success");
+    history.push("/login");
   };
 
   return (
@@ -63,12 +66,13 @@ export default () => {
                 size="xl"
                 type="submit"
                 onClick={submitRegister}
+                style={{ color: "black" }}
               >
                 SUBMIT
               </Button>
-              <Button variant="flat" size="xl" onClick={toLogin}>
+              {/* <Button variant="flat" size="xl" onClick={toLogin}>
                 LOG IN
-              </Button>
+              </Button> */}
             </Form>
           </Col>
         </Row>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../store/actions/userAction";
+import Swal from "sweetalert2";
 
 export default () => {
   const history = useHistory();
@@ -16,19 +17,19 @@ export default () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    console.log("isi innput SUBMIT", userEmail, userPassword);
-    localStorage.username = userEmail;
-    localStorage.password = userPassword;
-    if (localStorage.username) {
-      let userData = {
-        email: userEmail,
-        password: userPassword,
-      };
-      console.log(userData);
-      dispatch(login(userData));
-      history.push("/dashboard");
+    //console.log("isi innput SUBMIT", userEmail, userPassword);
+    /* localStorage.username = userEmail;
+    localStorage.password = userPassword; */
+    let userData = {
+      email: userEmail,
+      password: userPassword,
+    };
+    if (userData.email == "" || userData.password == "") {
+      Swal.fire("Failed", "please input name and password", "error");
     } else {
-      alert("please input name and password");
+      dispatch(login(userData));
+      Swal.fire("Great !", "Login Success", "success");
+      history.push("/user/select");
     }
   };
 
@@ -67,17 +68,32 @@ export default () => {
                   }}
                 />
               </Form.Group>
+              <span style={{ color: "#d3d3d3" }}>
+                don't have account ? register{" "}
+                <Link to="/register">
+                  <b style={{ color: "#d3d3d3" }}>here</b>
+                </Link>
+              </span>
+              <br />
+              <br />
               <Button
                 variant="flat"
                 size="xl"
                 type="submit"
+                style={{ color: "black" }}
                 onClick={submitLogin}
               >
                 SUBMIT
               </Button>
-              <Button variant="flat" size="xl" onClick={toRegister}>
+              {/* 
+              <Button
+                style={{ backgroundColor: "#76d690" }}
+                variant="flat"
+                size="xl"
+                onClick={toRegister}
+              >
                 REGISTER
-              </Button>
+              </Button> */}
             </Form>
           </Col>
         </Row>

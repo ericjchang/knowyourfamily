@@ -27,19 +27,20 @@
 // DELETE : /family/:id --> untuk decline relationship, id yg di pake, id relationship
 
 import axios from "axios";
-const dummyUrl = "http://localhost:3000/";
+const dummyUrl = "http://localhost:3000";
 
 export function login(data) {
   console.log("masuk login", data);
-  return (dispatch) => {
-    axios
+  return async (dispatch) => {
+    await axios
       .post(`${dummyUrl}/login`, data)
       .then((response) => {
-        console.log("sukses");
         dispatch({
           type: "USER_LOGIN",
           data: response.data,
         });
+        localStorage.setItem("access_token", response.data.access_token);
+        localStorage.setItem("username", response.data.payload.email);
       })
       .catch((err) => {
         console.log(err);
@@ -52,7 +53,7 @@ export function register(data) {
     axios
       .post(`${dummyUrl}/register`, data)
       .then((response) => {
-        console.log("sukses");
+        console.log("sukses", response);
         dispatch({
           type: "USER_REGISTER",
           data: response.data,

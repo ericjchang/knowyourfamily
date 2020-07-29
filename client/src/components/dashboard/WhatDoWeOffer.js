@@ -36,12 +36,18 @@ export default function WhatDoWeOffer() {
           <h1 style={{ fontSize: "4vw", marginTop: "15vw" }}>
             <b>WHAT DO WE OFFER</b>
           </h1>
-          <div style={{ textAlign: "justify", width: "50vw" }}>
+          <div style={{ textAlign: "right", width: "50vw", marginTop: "5vh" }}>
+            <h4>Closing the Gap</h4>
             <p style={{ fontSize: "1.5vw" }} className="my-3 text-muted">
-              Excepteur magna velit aute deserunt id sit ipsum occaecat magna ex
-              laborum nostrud. Occaecat occaecat dolore sit consectetur non quis
-              dolor irure ea ea et nisi. Amet dolor eiusmod sit fugiat elit
-              cillum amet enim.
+              Potentially reach out your relation in a blink
+            </p>
+            <h4>Verified Data</h4>
+            <p style={{ fontSize: "1.5vw" }} className="my-3 text-muted">
+              Authorized Civillian ID
+            </p>
+            <h4>Contact Information</h4>
+            <p style={{ fontSize: "1.5vw" }} className="my-3 text-muted">
+              Social media marketing, Current location
             </p>
           </div>
         </div>

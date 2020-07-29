@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import {
   withGoogleMap,
   GoogleMap,
@@ -6,11 +6,79 @@ import {
   InfoWindow,
   Marker,
 } from "react-google-maps";
+import { Link } from "react-router-dom";
 import Geocode from "react-geocode";
 import Autocomplete from "react-google-autocomplete";
 import { GoogleMapsAPI } from "../client-config";
 Geocode.setApiKey(GoogleMapsAPI);
 Geocode.enableDebug();
+
+/* export default function MapTools() {
+  const [userData, setUserData] = useState({
+    name: "",
+    date_of_birth: "",
+    place_of_birth: "",
+    gender: "",
+    instagram: "",
+    facebook: "",
+    address: "",
+    Location: {
+      lat: null,
+      lng: null,
+    },
+    relationship: [],
+  });
+  const [mapPosition, setMapPosition] = useState({ lat: null, lng: null });
+  const [markerPosition, setMarkerPosition] = useState({
+    lat: null,
+    lng: null,
+  });
+  useEffect(() => {
+    Geocode.fromLatLng(
+      setMapPosition({ lat: mapPosition.lat, lng: mapPosition.lng })
+    ).then(
+      (response) => {
+        const address = response.results[0].formatted_address,
+          addressArray = response.results[0].address_components,
+          city = getCity(addressArray),
+
+        setUserData({
+          address: address ? address : "",
+          city: city ? city : "",
+        });
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }, []);
+  const getCity = (addressArray) => {
+    let city = "";
+    for (let i = 0; i < addressArray.length; i++) {
+      if (
+        addressArray[i].types[0] &&
+        "administrative_area_level_2" === addressArray[i].types[0]
+      ) {
+        city = addressArray[i].long_name;
+        return city;
+      }
+    }
+  };
+  const shouldComponentUpdate = (nextProps, nextState) => {
+    if (
+      this.state.markerPosition.lat !== this.props.center.lat ||
+      this.state.address !== nextState.address ||
+      this.state.city !== nextState.city ||
+      this.state.area !== nextState.area ||
+      this.state.state !== nextState.state
+    ) {
+      return true;
+    } else if (this.props.center.lat === nextProps.center.lat) {
+      return false;
+    }
+  }
+  return <div></div>;
+} */
 
 class MapTools extends Component {
   constructor(props) {
@@ -31,14 +99,40 @@ class MapTools extends Component {
       test: [
         //-6.1753924,106.8249641
         {
-          address: "xxxx",
+          id: 2,
+          name: "Janet Doe",
+          address: "Warung Tante Damai, Jakarta",
+          lat: -6.2607187,
+          lng: 106.7794275,
+        },
+        {
+          id: 3,
+          name: "James Doe",
+          address: "Monumen Nasional, Indonesia",
+          lat: -6.1753924,
+          lng: 106.8249641,
+        },
+        {
+          id: 4,
+          name: "James Morgan",
+          address: "Jalan Merdeka, Bandung",
+          lat: -6.9170552,
+          lng: 107.6099095,
+        },
+        {
+          id: 5,
+          name: "Amara Morgan",
+          address: "Jalan Merdeka, Bandung",
+          lat: -6.9170552,
+          lng: 107.6099095,
+        },
+        {
+          id: 1,
+          name: "Alex Doe",
+          address: "Sesame St.",
           lat: this.props.center.lat,
           lng: this.props.center.lng,
         },
-        { address: "aaaa", lat: -6.2607187, lng: 106.7794275 },
-        { address: "bbbb", lat: -6.1753924, lng: 106.8249641 },
-        { address: "yyyy", lat: -6.9170552, lng: 107.6099095 },
-        { address: "oooo", lat: 40.6971494, lng: -74.2598661 },
       ],
     };
   }
@@ -46,6 +140,7 @@ class MapTools extends Component {
    * Get the current address from the default map position and set those values in the state
    */
   componentDidMount() {
+    console.log(this.state.mapPosition, this.state.mapPosition);
     Geocode.fromLatLng(
       this.state.mapPosition.lat,
       this.state.mapPosition.lng
@@ -56,8 +151,6 @@ class MapTools extends Component {
           city = this.getCity(addressArray),
           area = this.getArea(addressArray),
           state = this.getState(addressArray);
-
-        console.log("city", city, area, state);
 
         this.setState({
           address: address ? address : "",
@@ -209,7 +302,6 @@ class MapTools extends Component {
    * @param place
    */
   onPlaceSelected = (place) => {
-    console.log("plc", place);
     const address = place.formatted_address,
       addressArray = place.address_components,
       city = this.getCity(addressArray),
@@ -248,7 +340,7 @@ class MapTools extends Component {
           {/* InfoWindow on top of marker */}
           {this.state.test.map((e) => {
             return (
-              <div>
+              <div key={e.id} style={{ width: "90%" }}>
                 <InfoWindow
                   onClose={this.onInfoWindowClose}
                   position={{
@@ -257,11 +349,14 @@ class MapTools extends Component {
                   }}
                 >
                   <div>
+                    <span style={{ padding: 0, margin: 0 }}>
+                      <Link to={`/individuals/${e.id}`}>{e.name}</Link>
+                    </span>
+                    <br />
                     <span style={{ padding: 0, margin: 0 }}>{e.address}</span>
+                    <br />
                   </div>
                 </InfoWindow>
-                {/*Marker*/}
-
                 <Marker
                   google={this.props.google}
                   name={"Dolores park"}
@@ -272,32 +367,20 @@ class MapTools extends Component {
                     lng: e.lng,
                   }}
                 />
+                <Autocomplete
+                  style={{
+                    width: "100%",
+                    height: "40px",
+                    paddingLeft: "16px",
+                    marginTop: "2px",
+                    marginBottom: "500px",
+                  }}
+                  onPlaceSelected={this.onPlaceSelected}
+                  types={["(regions)"]}
+                />
               </div>
             );
           })}
-          {/*  <Marker
-            google={this.props.google}
-            name={"Dolores park"}
-            draggable={true}
-            onDragEnd={this.onMarkerDragEnd}
-            position={{
-              lat: this.state.markerPosition.lat,
-              lng: this.state.markerPosition.lng,
-            }}
-          />
-          <Marker /> */}
-          {/* For Auto complete Search Box */}
-          <Autocomplete
-            style={{
-              width: "100%",
-              height: "40px",
-              paddingLeft: "16px",
-              marginTop: "2px",
-              marginBottom: "500px",
-            }}
-            onPlaceSelected={this.onPlaceSelected}
-            types={["(regions)"]}
-          />
         </GoogleMap>
       ))
     );
@@ -307,7 +390,7 @@ class MapTools extends Component {
         <div>
           <div>
             <div className="form-group">
-              <label htmlFor="">Address</label>
+              <h1 style={{ fontWeight: "bolder" }}>Address</h1>
               <input
                 type="text"
                 name="address"
@@ -333,4 +416,5 @@ class MapTools extends Component {
     return map;
   }
 }
+
 export default MapTools;

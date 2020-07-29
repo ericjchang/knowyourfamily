@@ -41,18 +41,27 @@ export default function Navigation() {
         style={{
           width: "100%",
           zIndex: "100",
-          backgroundColor: `#D58A00`,
+          backgroundColor: `#C2006D`,
         }}
       >
         <Navbar.Brand>
-          <Link to="/dashboard">Famtree</Link>
+          <Link to="/dashboard" style={{ textDecoration: "none" }}>
+            <img
+              src="https://i.imgur.com/VnKgoIN.png"
+              style={{ width: "180px" }}
+            />
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {/* // <div> */}
             {localStorage.username && (
-              <NavDropdown title="Create" id="basic-nav-dropdown">
+              <NavDropdown
+                title="Create"
+                id="basic-nav-dropdown"
+                style={{ color: "#ffffff" }}
+              >
                 <NavDropdown.Item onClick={toIndividualPage}>
                   Create a Profile
                 </NavDropdown.Item>
@@ -85,15 +94,19 @@ export default function Navigation() {
             <Navbar.Brand>
               <i className="fa fa-search fa-2x" onClick={toSearchPage}></i>
             </Navbar.Brand>
-            <Button className="btn btn-danger" onClick={toMap}>
+            <Button
+              className="btn"
+              style={{ backgroundColor: "#D58A00" }}
+              onClick={toMap}
+            >
               See Nearby
             </Button>
-            <button
+            {/* <button
               className="btn btn-outline-light ml-2"
-              /* onClick={changeTheme} */
+              /* onClick={changeTheme}
             >
               Theme
-            </button>
+            </button> */}
             {!localStorage.username && (
               <Navbar.Brand>
                 <i
@@ -104,9 +117,13 @@ export default function Navigation() {
             )}
             {localStorage.username && (
               <Navbar.Brand>
-                <Button variant="dark" className="btn ml-2">
+                <div
+                  variant="dark"
+                  style={{ backgroundColor: "#121212", color: "#d3d3d3" }}
+                  className="btn ml-2"
+                >
                   {localStorage.username}
-                </Button>
+                </div>
               </Navbar.Brand>
             )}
             {localStorage.username && (

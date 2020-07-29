@@ -29,10 +29,6 @@
 import axios from "axios";
 const dummyUrl = "http://localhost:3000/family";
 
-export function loginUser() {
-  console.log("MASUK ACTION loginUser");
-}
-
 export function fetchData() {
   return (dispatch) => {
     axios

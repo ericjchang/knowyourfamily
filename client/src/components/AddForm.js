@@ -6,14 +6,25 @@ import {
   InfoWindow,
   Marker,
 } from "react-google-maps";
+import Swal from "sweetalert2";
 import Geocode from "react-geocode";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import Autocomplete from "react-google-autocomplete";
 import { GoogleMapsAPI } from "../client-config";
 import { addIndividual } from "../store/actions/individualAction";
 import { connect } from "react-redux";
-import axios from "axios";
-const dummyUrl = "http://localhost:3000/users";
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  onOpen: (toast) => {
+    toast.addEventListener("mouseenter", Swal.stopTimer);
+    toast.addEventListener("mouseleave", Swal.resumeTimer);
+  },
+});
 
 Geocode.setApiKey(GoogleMapsAPI);
 Geocode.enableDebug();
@@ -44,6 +55,15 @@ class Map extends Component {
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  changeColor = (e) => {
+    e.target.style.backgroundColor = "#D58A00";
+    return;
+  };
+  changeColor1 = (e) => {
+    e.target.style.backgroundColor = "transparent";
+    return;
+  };
+
   handleName(e) {
     this.setState({ name: e.target.value });
   }
@@ -70,7 +90,7 @@ class Map extends Component {
   //     console.log("Clicked, new value = ", cb.checked);
   //   }
 
-  addIndividual(data) {
+  /* addIndividual(data) {
     console.log("MASUK NIH", dummyUrl);
     return (dispatch) => {
       //   axios({
@@ -104,7 +124,7 @@ class Map extends Component {
           console.log(err);
         });
     };
-  }
+  } */
 
   onSubmit(e) {
     e.preventDefault();
@@ -118,7 +138,7 @@ class Map extends Component {
       instagram: this.state.instagram,
       facebook: this.state.facebook,
       location: this.state.markerPosition,
-      relationship: this.state.relationship,
+      //relationship: this.state.relationship,
     };
     if (
       obj.name == "" ||
@@ -130,10 +150,14 @@ class Map extends Component {
       obj.facebook == "" ||
       obj.location == ""
     ) {
-      alert("ada yang kosong");
+      Swal.fire("Failed!", "field cannot be empty !", "error");
     } else {
       //   const { dispatch } = this.props;
-      this.addIndividual(obj);
+      this.props.addIndividual(obj);
+      Toast.fire({
+        icon: "success",
+        title: "Successfully added individual",
+      });
     }
     console.log(obj);
   }
@@ -331,8 +355,8 @@ class Map extends Component {
               height: "40px",
               paddingLeft: "16px",
               marginTop: "2px",
-              marginBottom: "500px",
             }}
+            placeholder="Enter your city"
             onPlaceSelected={this.onPlaceSelected}
             types={["(regions)"]}
           />
@@ -342,10 +366,18 @@ class Map extends Component {
     let map;
     if (this.props.center.lat !== undefined) {
       map = (
-        <div style={{ marginTop: "10vh" }}>
-          <Row>
-            <Col sm={6}></Col>
-            <Col sm={6} style={{ paddingRight: "5vw" }}>
+        <div style={{ marginTop: "0vh" }}>
+          <Row style={{ padding: "5vh" }}>
+            <Col sm={6}>
+              <AsyncMap
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GoogleMapsAPI}&libraries=places`}
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ height: this.props.height }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+              />
+            </Col>
+            <Col sm={6} style={{ paddingTop: "0vh" }}>
+              <h1 style={{ fontWeight: "bolder" }}>Add Individual</h1>
               <form>
                 <div>
                   <div className="form-group">
@@ -415,26 +447,37 @@ class Map extends Component {
                       className="form-control"
                       onChange={this.onChange}
                       value={this.state.address}
+                      disabled
                     />
                   </div>
                 </div>
+                <br />
                 <Button
+                  className="btn"
+                  onClick={(e) => this.onSubmit(e)}
+                  style={{
+                    alignSelf: "center",
+                    borderColor: "#C2006D",
+                    borderWidth: "3px",
+                    borderRadius: "20px",
+                    color: "black",
+                  }}
+                  onMouseEnter={this.changeColor}
+                  onMouseLeave={this.changeColor1}
+                >
+                  Submit
+                </Button>
+                {/* <Button
                   onClick={(e) => this.onSubmit(e)}
                   variant="flat"
                   size="xl"
+                  style={{ marginBottom: "2vh", backgroundColor: "red" }}
                 >
                   SUBMIT
-                </Button>
+                </Button> */}
               </form>
             </Col>
           </Row>
-
-          <AsyncMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GoogleMapsAPI}&libraries=places`}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: this.props.height }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-          />
         </div>
       );
     } else {
@@ -443,4 +486,8 @@ class Map extends Component {
     return map;
   }
 }
-export default Map;
+const mapStateToProps = (state) => ({
+  individuals: state.IndividualReducer.individuals,
+});
+const mapDispatchToProps = { addIndividual };
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

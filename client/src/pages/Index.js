@@ -7,14 +7,14 @@ import ApplyYourData from "../components/dashboard/ApplyYourData";
 import GetInTouch from "../components/dashboard/GetInTouch";
 
 export default () => {
-  /* useEffect(()=> {
+  useEffect(() => {
     if (localStorage.getItem("reloaded")) {
       localStorage.removeItem("reloaded");
     } else {
-      localStorage.setItem("reloaded", "1")
+      localStorage.setItem("reloaded", "1");
       window.location.reload();
     }
-  }, []) */
+  }, []);
   return (
     <div>
       <LandingPage />

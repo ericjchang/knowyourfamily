@@ -259,6 +259,17 @@ class Map extends Component {
             }}
           />
           <Marker />
+          <Marker
+            google={this.props.google}
+            name={"Dolores park"}
+            draggable={true}
+            onDragEnd={this.onMarkerDragEnd}
+            position={{
+              lat: -6.2607187,
+              lng: 106.7794275,
+            }}
+          />
+          <Marker />
           {/* For Auto complete Search Box */}
           <Autocomplete
             style={{

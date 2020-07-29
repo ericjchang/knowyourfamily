@@ -1,6 +1,6 @@
-const { User } = require('../models');
-const { encrypt, compare } = require('../helpers/bcrypt.js');
-const { userToken } = require('../helpers/jwt.js');
+const { User } = require("../models");
+const { encrypt, compare } = require("../helpers/bcrypt.js");
+const { userToken } = require("../helpers/jwt.js");
 
 class UserController {
   static register(req, res, next) {
@@ -36,17 +36,21 @@ class UserController {
               id: result.id,
               email: result.email,
             });
-            res.status(200).json({ access_token });
+            let payload = {
+              id: result.id,
+              email: result.email,
+            };
+            res.status(200).json({ access_token, payload });
           } else {
             return next({
               code: 401,
-              msg: 'Password does not match!',
+              msg: "Password does not match!",
             });
           }
         } else {
           return next({
             code: 404,
-            msg: 'User is not registered',
+            msg: "User is not registered",
           });
         }
       })
@@ -88,7 +92,7 @@ class UserController {
         } else {
           return next({
             code: 404,
-            msg: 'User not found',
+            msg: "User not found",
           });
         }
       })
