@@ -30,20 +30,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: 'Password is required'
-        },
-        notEmpty: {
-          args: true,
-          msg: 'Password cannot be empty'
-        }
-      }
-    },
     gender: {
       type: DataTypes.ENUM('male', 'female', 'other'),
       validate: {

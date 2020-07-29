@@ -1,6 +1,6 @@
 'use strict';
 
-const {} = require('../helpers/bcrypt.js');
+const { encrypt } = require('../helpers/bcrypt.js');
 
 const {
   Model
@@ -20,8 +20,11 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     email: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: false,
+      unique: {
+        args: true,
+        msg: 'Email already exists'
+      },
       validate: {
         notNull: {
           args: true,
@@ -30,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           args: true,
           msg: 'Email cannot be empty'
+        },
+        isEmail: {
+          args: true,
+          msg: 'Must be an email'
         }
       }
     },

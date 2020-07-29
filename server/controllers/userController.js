@@ -10,6 +10,7 @@ class UserController {
       password
     })
       .then(result => {
+        console.log(result)
         const payload = {
           id: result.id,
           email: result.email
@@ -17,6 +18,7 @@ class UserController {
         res.status(201).json(payload);
       })
       .catch(err => {
+        console.log(err)
         return next(err);
       });
   };
@@ -35,7 +37,7 @@ class UserController {
               id: result.id,
               email: result.email
             })
-            res.status(200).json(token);
+            res.status(200).json({token});
           } else {
             return next({
               code: 401,
