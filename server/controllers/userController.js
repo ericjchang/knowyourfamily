@@ -17,7 +17,7 @@ class UserController {
         res.status(201).json(payload);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         return next(err);
       });
   }
@@ -52,47 +52,6 @@ class UserController {
       })
       .catch((err) => {
         console.log(err);
-        return next(err);
-      });
-  }
-
-  static findUserById(req, res, next) {
-    const { id } = req.params;
-    User.findOne({
-      where: {
-        id,
-      },
-    })
-      .then((result) => {
-        res.status(200).json(result);
-      })
-      .catch((err) => {
-        return next(err);
-      });
-  }
-
-  static updateUser(req, res, next) {
-    const { id } = req.params;
-    let hash = encrypt(req.body.password);
-    let { email } = req.body;
-    let updated = { email, hash };
-    User.update(updated, {
-      where: {
-        id,
-      },
-      returning: true,
-    })
-      .then((result) => {
-        if (result[0] > 0) {
-          res.status(200).json(result[1][0]);
-        } else {
-          return next({
-            code: 404,
-            msg: 'User not found',
-          });
-        }
-      })
-      .catch((err) => {
         return next(err);
       });
   }

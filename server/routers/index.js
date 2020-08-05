@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const UserController = require('../controllers/userController.js');
-const UserRouter = require('./user.js');
 const IndividualRouter = require('./individual.js');
 const RelationshipRouter = require('./relationship.js');
 const SuggestionpRouter = require('./suggestion.js');
@@ -12,7 +11,6 @@ router.get('/', (req, res, next) => {
 });
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
-router.use('/user', UserRouter);
 router.use('/individual', IndividualRouter);
 router.use('/family', RelationshipRouter);
 router.use('/suggestion', SuggestionpRouter);
