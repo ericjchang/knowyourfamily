@@ -17,7 +17,7 @@ class UserController {
         res.status(201).json(payload);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         return next(err);
       });
   }

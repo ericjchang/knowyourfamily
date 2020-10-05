@@ -1,0 +1,32 @@
+[
+  {
+    "name": "John Doe",
+    "gender": "male",
+    "date_of_birth": "1997-12-27",
+    "place_of_birth": "London",
+    "address": "4th Sesame St. Avenue",
+    "instagram": "",
+    "facebook": "John Doe",
+    "UserId": 1
+  }, 
+  {
+    "name": "Papa Doe",
+    "gender": "male",
+    "date_of_birth": "1967-12-23",
+    "place_of_birth": "Manchester",
+    "address": "1st Sesame St. Avenue",
+    "instagram": "",
+    "facebook": "",
+    "UserId": 1
+  },
+  {
+    "name": "Sister Doe",
+    "gender": "female",
+    "date_of_birth": "2000-12-23",
+    "place_of_birth": "London",
+    "address": "45 Silk St.",
+    "instagram": "",
+    "facebook": "",
+    "UserId": 2
+  }
+]

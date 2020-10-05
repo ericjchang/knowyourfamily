@@ -1,14 +1,13 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "family_development2",
+    "username": "ahmadalhq",
+    "password": "empatpuluh6",
+    "database": "family_development",
     "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
-    "password": "postgres",
+    "password": "empatpuluh6",
     "database": "family_test",
     "host": "localhost",
     "dialect": "postgres"
